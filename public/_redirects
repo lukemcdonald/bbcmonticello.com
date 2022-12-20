@@ -1,0 +1,11 @@
+# Redirects from what the browser requests to what we serve for Netlify
+
+https://bbcmonticello.netlify.com/*   https://bbcmonticello.com/:splat 301!
+
+/sitemap-index.xml      /sitemap-index.xml        200
+
+/blog/:slug/            /                         301
+/blog/author/:author/   /												  301
+/bible-studies/         /ministries/              301
+/sunday-school/         /ministries/              301
+/vbs/                   /ministries/              301

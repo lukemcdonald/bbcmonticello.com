@@ -1,0 +1,16 @@
+---
+import Breadcrumbs, { Breadcrumb } from './Breadcrumbs.astro';
+import SiteIdentity from './SiteIdentity.astro';
+import SiteNavigation from './SiteNavigation.astro';
+
+const breadcrumbs: Breadcrumb[] = Astro.props.breadcrumbs;
+---
+
+<a class="skip-link sr-only" href="#content">Skip to content</a>
+
+<header id="masthead" class="relatve z-50 bg-primary-500 text-white" role="banner">
+  <SiteNavigation />
+  <SiteIdentity />
+  {breadcrumbs ? <Breadcrumbs links={breadcrumbs} /> : null}
+  <slot />
+</header>

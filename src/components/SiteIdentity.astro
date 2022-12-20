@@ -1,0 +1,36 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import Logo from './Logo.astro';
+---
+
+<section>
+  <div class="px-6 py-8 sm:flex sm:items-center sm:justify-between lg:container">
+    <div>
+      <div class="w-40 sm:w-48">
+        <a class="block" rel="home" href="/">
+          <Logo />
+        </a>
+      </div>
+      <h1
+        class="sr-only font-sans text-2xl font-normal uppercase leading-tight tracking-widest lg:text-4xl"
+      >
+        {SITE_TITLE}
+      </h1>
+      <p class="sr-only mb-0 hidden text-base leading-tight md:block">
+        {SITE_DESCRIPTION}
+      </p>
+    </div>
+    <div class="text-sm italic">
+      <address class="business-info mt-6 sm:mt-0 sm:text-right">
+        <a
+          class="block"
+          href="https://www.google.com/maps/place/Berean+Bible+Church/@42.2248147,-91.1925737,17z/data=!3m1!4b1!4m5!3m4!1s0x87e36074774e06bd:0xd8e7ca558df6812c!8m2!3d42.2248147!4d-91.190385"
+        >
+          <div class="sr-only font-bold">Berean Bible Church</div>
+          <div>16107 County Rd E16</div>
+          <div>Monticello, IA 52310</div>
+        </a>
+      </address>
+    </div>
+  </div>
+</section>

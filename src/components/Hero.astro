@@ -1,0 +1,20 @@
+---
+const { image, imageAlt = '' } = Astro.props;
+---
+
+<section id="hero" class="relative z-10">
+  <div class="relative z-10 px-6 lg:container xl:px-0">
+    <figure
+      class="flex items-center overflow-hidden rounded bg-gray-900 shadow-md xl:-mx-2"
+      style="max-height: 471px"
+    >
+      <div>
+        <img decoding="async" loading="lazy" src={image} alt={imageAlt} />
+      </div>
+    </figure>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0 h-12 bg-white"></div>
+</section>
+
+<!-- 'block h-full w-full max-w-none object-cover' -->

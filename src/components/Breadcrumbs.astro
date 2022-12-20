@@ -1,0 +1,37 @@
+---
+const { links = [] } = Astro.props;
+
+export interface Breadcrumb {
+  href: string;
+  label: string;
+}
+---
+
+<section
+  id="breadcrumbs"
+  class="relative bg-secondary-200 py-4 font-sans text-xs uppercase tracking-widest text-secondary-800"
+>
+  <div class="flex gap-3 px-6 lg:container">
+    {
+      links.map((link: Breadcrumb, idx: number) => {
+        const isLast = idx === links.length - 1;
+        return (
+          <>
+            {!isLast ? (
+              <>
+                <span>
+                  <a href={link.href}>{link.label}</a>
+                </span>
+                <span class="sep">⟩</span>
+              </>
+            ) : (
+              <span class="breadcrumb_last" aria-current="page">
+                {link.label}
+              </span>
+            )}
+          </>
+        );
+      })
+    }
+  </div>
+</section>

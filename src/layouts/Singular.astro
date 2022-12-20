@@ -1,0 +1,58 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Body from '../components/Body.astro';
+import Content from '../components/Content.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+  };
+}
+
+const {
+  content: { title, description },
+} = Astro.props;
+
+const breadcrumbs = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: title,
+    href: Astro.url,
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <Body>
+    <Header title={title} breadcrumbs={breadcrumbs} />
+    <Content>
+      <main class="relative py-8 md:col-span-2 lg:py-16">
+        <article>
+          <header>
+            <h1
+              class="break-words font-sans text-xl font-bold leading-snug text-gray-900 sm:text-4xl"
+            >
+              {title}
+            </h1>
+          </header>
+        </article>
+        <div class="prose mt-6 max-w-none">
+          <slot />
+        </div>
+      </main>
+    </Content>
+    <Footer />
+  </Body>
+
+</html>

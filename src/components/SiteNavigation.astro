@@ -1,0 +1,49 @@
+---
+import MenuIcon from './icons/MenuIcon.astro';
+
+const { pathname } = Astro.url;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/calendar', label: 'Calendar' },
+  { href: '/missions', label: 'Missions' },
+  { href: '/contact', label: 'Contact' },
+];
+
+function isActiveLink(href: string, pathname: string): boolean {
+  return href === pathname || href === pathname.replace(/\/$/, '');
+}
+---
+
+<section class="sticky top-0 z-30 bg-white text-gray-900 shadow">
+  <div class="flex items-center justify-between py-1 pr-2 lg:container lg:px-6 lg:py-0">
+    <button
+      class="flex items-center gap-1 rounded-none bg-transparent bg-primary-500 px-3 py-2 font-sans text-sm uppercase text-gray-900 hover:bg-transparent hover:text-inherit lg:hidden"
+    >
+      <MenuIcon class="inline-block h-6 w-6" />
+      <span class="inline-block font-bold">Menu</span>
+    </button>
+    <nav class="hidden lg:block" role="navigation">
+      <ul
+        class="absolute left-0 right-0 top-full list-none divide-y divide-gray-100 bg-gray-200 font-sans lg:static lg:-mx-4 lg:flex lg:divide-y-0 lg:bg-transparent lg:text-inherit lg:shadow-none"
+      >
+        {
+          links.map((link) => {
+            const isActive = isActiveLink(link.href, pathname);
+
+            return (
+              <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
+                <a
+                  class="relative block py-4 px-4 text-sm uppercase leading-tight tracking-widest hover:text-primary-500"
+                  href={link.href}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</section>

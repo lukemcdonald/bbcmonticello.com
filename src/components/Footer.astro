@@ -1,0 +1,45 @@
+---
+import WidgetText from './WidgetText.astro';
+
+const today = new Date();
+---
+
+<footer role="contentinfo">
+  <aside id="footer-widgets" role="complementary">
+    <div class="px-6 lg:container">
+      <div
+        class="widget-area grid grid-cols-1 gap-12 border-t border-gray-200 py-8 md:grid-cols-3 md:gap-16 lg:py-16"
+      >
+        <WidgetText title="Who We Are">
+          <p>
+            We are a family of believers who seek to honor God in our daily lives by focusing on
+            God’s Word, loving each other and prayerfully sharing the Gospel of Jesus Christ.
+          </p>
+        </WidgetText>
+
+        <WidgetText title="The Berean Name">
+          <p>
+            In Acts 17, a group of believers in Berea were said to have "…received the message with
+            great eagerness and examined the Scriptures every day to see if what Paul said was
+            true."
+          </p>
+        </WidgetText>
+
+        <WidgetText title="Sunday Worship">
+          <p>
+            Due to current circumstances, Sunday Worship times may vary week to week. Please contact
+            us with questions.
+          </p>
+        </WidgetText>
+      </div>
+    </div>
+  </aside>
+
+  <section id="site-credits" class="text-sm">
+    <div class="px-6 lg:container">
+      <div class="border-t border-gray-200 py-8">
+        &copy; Berean Bible Church {today.getFullYear()}
+      </div>
+    </div>
+  </section>
+</footer>
