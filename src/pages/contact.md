@@ -1,11 +1,11 @@
 ---
 layout: "../layouts/Singular.astro"
 title: "Contact"
-description: "Lorem ipsum dolor sit amet"
-updatedDate: "August 08 2022"
-heroImage: "/placeholder-about.jpg"
+description: "Contact Berean Bible Church"
 ---
 
-Contact info / maybe form
+Please feel free to email <a href="mailto:mikemartin@bbcmonticello.com">Mike Martin</a> with any questions, comments, or prayer requests using the following email address:
 
-<small>Messages are sent to the church leader and will remain confidential.</small>
+`mikemartin@bbcmonticello.com`
+
+Messages are sent to the church will remain confidential.
