@@ -9,7 +9,7 @@ export interface Props {
 const { prose = true, title } = Astro.props;
 ---
 
-<div class="mb-6 text-base">
+<div class="text-base">
   {title ? <WidgetTitle>{title}</WidgetTitle> : null}
   <div class:list={[prose]}>
     <slot />
