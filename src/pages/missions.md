@@ -8,9 +8,9 @@ description: "Berean Bible Church is missional in intentional ways, providing re
 
 Christ has called His followers to engage in the Great Commission (Matthew 28:18-20). Every Christian is called to share the gospel and to send out those who will preach the gospel and make disciples of all nations. This means that some will go to other countries, leaving the comforts of “home” in order to take the message to the farthest corners of the earth.
 
-<hr />
+---
 
-<h2>Onesimus Ministry</h2>
+## Onesimus Ministry
 
 The [Onesimus Children Development Association](https://www.facebook.com/OnesimusCDA/) (OCDA) is a non-governmental organization, established in 2006 by [Nega Meaza](https://www.facebook.com/nega.meaza). In 2004, he met with visionaries to share his desire to help the street children of Ethiopia. After two years of praying what the next steps could be, Meaza and five other Ethiopians established the organization.
 
@@ -32,8 +32,4 @@ For more than 70 years, [Wycliffe](https://www.wycliffe.org/) has helped people 
 
 As a church, we also keep informed and updated with organizations of which some in our church support through private gifts or have done mission work with:
 
-<ul>
-	<li>
-		<a href="https://www.persecution.com/">The Voice of the Martyrs</a>
-	</li>
-</ul>
+* [The Voice of the Martyrs](https://www.persecution.com/)
