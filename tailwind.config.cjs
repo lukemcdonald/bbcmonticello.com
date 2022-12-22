@@ -38,7 +38,7 @@ module.exports = {
 						a: {
 							color: 'none',
 							textDecoration: 'none',
-							'&:not(.button):not(.wp-block-button__link)': {
+							'&:not(.button)': {
 								color: theme('colors.primary.500'),
 								'&:hover': {
 									textDecoration: 'underline',
