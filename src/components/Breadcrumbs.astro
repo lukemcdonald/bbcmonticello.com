@@ -1,14 +1,17 @@
 ---
-const { links = [] } = Astro.props;
-
 export interface Breadcrumb {
-  href: string;
+  href: string | URL;
   label: string;
 }
+
+export interface Props {
+  links: Breadcrumb[];
+}
+
+const { links } = Astro.props;
 ---
 
 <section
-  id="breadcrumbs"
   class="relative bg-secondary-200 py-4 font-sans text-xs uppercase tracking-widest text-secondary-800"
 >
   <div class="flex gap-3 px-6 lg:container">
