@@ -6,7 +6,12 @@ interface NavItem {
   href: string;
 }
 
-const { items = [], title } = Astro.props;
+export interface Props {
+  title: string;
+  items: NavItem[];
+}
+
+const { items, title } = Astro.props;
 ---
 
 <Widget title={title}>

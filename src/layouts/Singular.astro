@@ -9,11 +9,15 @@ import Html from '../components/layout/Html.astro';
 import Main from '../components/layout/Main.astro';
 
 export interface Props {
-  title: string;
-  description: string;
+  content: {
+    description: string;
+    title: string;
+  };
 }
 
-const { title, description } = Astro.props.content satisfies Props;
+const {
+  content: { description, title },
+} = Astro.props;
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -25,7 +29,7 @@ const breadcrumbs = [
   <Head title={title} description={description} />
 
   <Body>
-    <Header title={title} breadcrumbs={breadcrumbs} />
+    <Header breadcrumbs={breadcrumbs} />
     <Content>
       <Main>
         <article>

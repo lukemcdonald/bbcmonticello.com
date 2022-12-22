@@ -1,11 +1,16 @@
 ---
 import WidgetTitle from './WidgetTitle.astro';
 
+export interface Props {
+  prose?: boolean;
+  title?: string;
+}
+
 const { prose = true, title } = Astro.props;
 ---
 
 <div class="mb-6 text-base">
-  <WidgetTitle>{title}</WidgetTitle>
+  {title ? <WidgetTitle>{title}</WidgetTitle> : null}
   <div class:list={[prose]}>
     <slot />
   </div>

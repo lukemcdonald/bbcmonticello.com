@@ -3,7 +3,11 @@ import Breadcrumbs, { Breadcrumb } from '../Breadcrumbs.astro';
 import SiteIdentity from '../SiteIdentity.astro';
 import SiteNavigation from '../SiteNavigation.astro';
 
-const breadcrumbs: Breadcrumb[] = Astro.props.breadcrumbs;
+export interface Props {
+  breadcrumbs?: Breadcrumb[];
+}
+
+const { breadcrumbs } = Astro.props;
 ---
 
 <a class="skip-link sr-only" href="#content">Skip to content</a>
