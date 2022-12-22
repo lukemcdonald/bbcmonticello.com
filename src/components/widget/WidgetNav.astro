@@ -1,0 +1,22 @@
+---
+import Widget from './Widget.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const { items = [], title } = Astro.props;
+---
+
+<Widget title={title}>
+  <nav class="divide-y divide-gray-200">
+    {
+      items.map((item: NavItem) => (
+        <a class="block py-4 !text-gray-700 hover:text-primary-500" href={item.href}>
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+</Widget>

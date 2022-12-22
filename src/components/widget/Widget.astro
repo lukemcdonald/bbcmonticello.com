@@ -1,0 +1,12 @@
+---
+import WidgetTitle from './WidgetTitle.astro';
+
+const { prose = true, title } = Astro.props;
+---
+
+<div class="mb-6 text-base">
+  <WidgetTitle>{title}</WidgetTitle>
+  <div class:list={[prose]}>
+    <slot />
+  </div>
+</div>

@@ -1,18 +1,16 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
-import BaseHead from '../components/BaseHead.astro';
-import Body from '../components/Body.astro';
-import Content from '../components/Content.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+
+import Body from '../components/layout/Body.astro';
+import Footer from '../components/layout/Footer.astro';
+import Head from '../components/layout/Head.astro';
+import Header from '../components/layout/Header.astro';
 import Hero from '../components/Hero.astro';
+import Html from '../components/layout/Html.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="h-full">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
+<Html>
+  <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
   <Body>
     <Header title={SITE_TITLE}>
@@ -20,4 +18,4 @@ import Hero from '../components/Hero.astro';
     </Header>
     <Footer />
   </Body>
-</html>
+</Html>

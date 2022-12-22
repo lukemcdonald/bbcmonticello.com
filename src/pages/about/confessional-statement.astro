@@ -1,103 +1,50 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import Body from '../../components/Body.astro';
-import Content from '../../components/Content.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import WidgetText from '../../components/WidgetText.astro';
-import Sidebar from '../../components/Sidebar.astro';
-
-export interface Props {
-  content: {
-    title: string;
-    description: string;
-  };
-}
+import EntryTitle from '../../components/entry/EntryTitle.astro';
+import Body from '../../components/layout/Body.astro';
+import Content from '../../components/layout/Content.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Head from '../../components/layout/Head.astro';
+import Header from '../../components/layout/Header.astro';
+import Html from '../../components/layout/Html.astro';
+import Main from '../../components/layout/Main.astro';
+import Sidebar from '../../components/layout/Sidebar.astro';
+import WidgetNav from '../../components/widget/WidgetNav.astro';
 
 const title = 'Confessional Statement';
 const description =
   'The following Confessional Statement is presented here with the permission of The Gospel Coalition of which Berean Bible Church is a member.';
 
 const breadcrumbs = [
-  {
-    label: 'Home',
-    href: '/',
-  },
-  {
-    label: title,
-    href: Astro.url,
-  },
+  { label: 'Home', href: '/' },
+  { label: title, href: Astro.url },
 ];
 
-const tableOfContents = [
-  {
-    href: '#the-triune-god',
-    label: '1. The Tri-une God',
-  },
-  {
-    href: '#revelation',
-    label: '2. Revelation',
-  },
-  {
-    href: '#creation-of-humanity',
-    label: '3. Creation of Humanity',
-  },
-  {
-    href: '#the-fall',
-    label: '4. The Fall',
-  },
-  {
-    href: '#the-gospel',
-    label: '5. The Gospel',
-  },
-  {
-    href: '#the-redemption-of-christ',
-    label: '6. The Redemption of Christ',
-  },
-  {
-    href: '#the-justification-of-sinners',
-    label: '7. The Justification of Sinners',
-  },
-  {
-    href: '#the-power-of-the-holy-spirit',
-    label: '8. The Power of the Holy Spirit',
-  },
-  {
-    href: '#the-kingdom-of-god',
-    label: '9. The Kingdom of God',
-  },
-  {
-    href: '#gods-new-people',
-    label: '10. God’s New People',
-  },
-  {
-    href: '#baptism-and-the-lords-supper',
-    label: '11. Baptism and the Lord’s Supper',
-  },
-  {
-    href: '#the-restoration-of-all-things',
-    label: '12. The Restoration of All Things',
-  },
+const toc = [
+  { href: '#the-triune-god', label: '1. The Tri-une God' },
+  { href: '#revelation', label: '2. Revelation' },
+  { href: '#creation-of-humanity', label: '3. Creation of Humanity' },
+  { href: '#the-fall', label: '4. The Fall' },
+  { href: '#the-gospel', label: '5. The Gospel' },
+  { href: '#the-redemption-of-christ', label: '6. The Redemption of Christ' },
+  { href: '#the-justification-of-sinners', label: '7. The Justification of Sinners' },
+  { href: '#the-power-of-the-holy-spirit', label: '8. The Power of the Holy Spirit' },
+  { href: '#the-kingdom-of-god', label: '9. The Kingdom of God' },
+  { href: '#gods-new-people', label: '10. God’s New People' },
+  { href: '#baptism-and-the-lords-supper', label: '11. Baptism and the Lord’s Supper' },
+  { href: '#the-restoration-of-all-things', label: '12. The Restoration of All Things' },
 ];
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-  </head>
+<Html>
+  <Head title={title} description={description} />
 
   <Body>
     <Header title={title} breadcrumbs={breadcrumbs} />
     <Content>
-      <main class="relative py-8 md:col-span-2 lg:py-16">
+      <Main>
         <article>
           <header>
-            <h1
-              class="break-words font-sans text-xl font-bold leading-snug text-gray-900 sm:text-4xl"
-            >
-              {title}
-            </h1>
+            <EntryTitle>{title}</EntryTitle>
           </header>
           <div class="prose mt-6 max-w-none">
             <p class="lead">
@@ -329,23 +276,11 @@ const tableOfContents = [
             </p>
           </div>
         </article>
-      </main>
+      </Main>
       <Sidebar>
-        <WidgetText title="Table of Contents">
-          <nav class="divide-y divide-gray-200">
-            {
-              tableOfContents.map((item) => {
-                return (
-                  <a class="block py-4 !text-gray-700 hover:text-primary-500" href={item.href}>
-                    {item.label}
-                  </a>
-                );
-              })
-            }
-          </nav>
-        </WidgetText>
+        <WidgetNav title="Table of Contents" items={toc} />
       </Sidebar>
     </Content>
+    <Footer />
   </Body>
-  <Footer />
-</html>
+</Html>
