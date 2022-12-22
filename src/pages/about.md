@@ -10,13 +10,13 @@ We seek to be “Berean” in the spirit of those who heard the Scriptures taugh
 
 In examining the Scriptures as those of Berea did, we also strive to apply them to our lives:
 
-<em>22 But be doers of the word, and not hearers only, deceiving yourselves. 23 For if anyone is a hearer of the word and not a doer, he is like a man who looks intently at his natural face in a mirror. 24 For he looks at himself and goes away and at once forgets what he was like. 25 But the one who looks into the perfect law, the law of liberty, and perseveres, being no hearer who forgets but a doer who acts, he will be blessed in his doing. (<a href="https://www.biblegateway.com/passage/?search=James%201:22-24">James 1:22-24 ESV</a>)</em>
+*22 But be doers of the word, and not hearers only, deceiving yourselves. 23 For if anyone is a hearer of the word and not a doer, he is like a man who looks intently at his natural face in a mirror. 24 For he looks at himself and goes away and at once forgets what he was like. 25 But the one who looks into the perfect law, the law of liberty, and perseveres, being no hearer who forgets but a doer who acts, he will be blessed in his doing. (<a href="https://www.biblegateway.com/passage/?search=James%201:22-24"><small>James 1:22-24 ESV</small></a>)*
 
-<h2>Our History</h2>
+## Our History
 
 Berean Bible Fellowship began meeting as a church in a home in Monticello during the summer of 1985. During this time the church outgrew its meeting space and after 11 years relocated for a short time to a rental property in Monticello, changing its name to Berean Bible Church. Today the church meets in its own facility at <a href="https://href.li/?http://goo.gl/aRQWTg">16107 County Road E16</a> just southwest of the Monticello Aquatic Center.
 
-<img src="/bbc-outside-03.jpg" decoding="async" loading="lazy">
+![Berean Bible Church building](/bbc-outside-03.jpg)
 
 From the early years as a church family gathering in a private home until the present, we have purposed to nurture the atmosphere of the church as family. There has always been a wide range of ages in the church, allowing us to learn how to minister to each other with respect and sensitivity to the various stages of life in which we find ourselves.
 
@@ -28,9 +28,7 @@ Berean Bible Church is also missional in intentional ways, providing regular sup
 
 As disciples who are mission-minded, we seek to live out the words of the following quotation found in the journals of Jim Elliott who gave his life to reach those who had never heard the gospel:
 
-<blockquote>
-	<p>“He is no fool who gives what he cannot keep to gain that which he cannot lose.”</p>
-</blockquote>
+> “He is no fool who gives what he cannot keep to gain that which he cannot lose.”
 
 It is in the spirit of that statement that we affirm our commitment to living for Christ and proclaiming the message of the gospel.
 
