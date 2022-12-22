@@ -11,7 +11,7 @@ const { prose = true, title } = Astro.props;
 
 <div class="text-base">
   {title ? <WidgetTitle>{title}</WidgetTitle> : null}
-  <div class:list={[prose]}>
+  <div class:list={[prose ? 'prose' : null]}>
     <slot />
   </div>
 </div>
