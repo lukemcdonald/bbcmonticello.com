@@ -1,4 +1,6 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 export interface Props {
   image: string;
   imageAlt?: string;
@@ -10,9 +12,9 @@ const { image, imageAlt = '' } = Astro.props;
 <section id="hero" class="relative z-10">
   <div class="relative z-10 px-6 lg:container xl:px-0">
     <figure class="flex items-center overflow-hidden rounded bg-gray-900 shadow-md">
-      <img class="aspect-[8/3] object-cover" decoding="async" src={image} alt={imageAlt} />
+      <Image alt={imageAlt} src={image} aspectRatio="8/3" widths="1280" height="480" />
     </figure>
   </div>
 
-  <div class="absolute bottom-0 left-0 right-0 h-12 bg-white"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-12 bg-white" role="separator"></div>
 </section>
