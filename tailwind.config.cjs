@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+const {fontFamily} = require("tailwindcss/defaultTheme");
 
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["Lato", ...defaultTheme.fontFamily.sans],
-				serif: ["Merriweather", ...defaultTheme.fontFamily.serif],
+				sans: ["Lato", ...fontFamily.sans],
+				serif: ["Merriweather", ...fontFamily.serif],
 			},
 			inset: {
 				'-12': '-3rem',
@@ -23,6 +23,7 @@ module.exports = {
 			},
 			container: {
 				center: true,
+				// padding: '1.5rem',
 				screens: {
 					'2xl': '1280px',
 				}
