@@ -12,7 +12,7 @@ const { image, imageAlt = '' } = Astro.props;
 <section id="hero" class="relative top-12 z-10 -mt-12 mb-12">
   <div class="relative z-10 px-6 lg:container xl:px-0">
     <figure class="flex items-center overflow-hidden rounded bg-gray-900 shadow-md">
-      <Image alt={imageAlt} src={image} aspectRatio="8/3" width="1280" height="480" />
+      <Image alt={imageAlt} src={image} aspectRatio="8:3" width={1280} height={480} />
     </figure>
   </div>
 </section>
