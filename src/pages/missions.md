@@ -1,7 +1,7 @@
 ---
-layout: "../layouts/Singular.astro"
-title: "Global Missions"
-description: "Berean Bible Church is missional in intentional ways, providing regular support for two long-term missionary couples and occasional short-term missionary opportunities."
+layout: '../layouts/Singular.astro'
+title: 'Global Missions'
+description: 'Berean Bible Church is missional in intentional ways, providing regular support for two long-term missionary couples and occasional short-term missionary opportunities.'
 ---
 
 <p class="lead">Berean Bible Church is missional in intentional ways, providing regular support for two long-term missionary couples and occasional short-term missionary opportunities.</p>
@@ -16,7 +16,7 @@ The [Onesimus Children Development Association](https://www.facebook.com/Onesimu
 
 OCDA seeks to rescue Ethiopian’s children at risk, ensuring they remain in or return to a loving family. They provide holistic programs that meet the children’s physical, emotional, developmental, and spiritual needs.
 
-OCDA  works with to two groups of children: Those who are on the verge of “streetism” and those who are full time street children. After starting with only seven children, Onesimus now works with 150+ children and their families. A partnership with [The Forsaken Children Ministry](https://www.theforsakenchildren.org/) allows them to have the transforming Gospel of Jesus Christ to be a central component of the program.
+OCDA works with to two groups of children: Those who are on the verge of “streetism” and those who are full time street children. After starting with only seven children, Onesimus now works with 150+ children and their families. A partnership with [The Forsaken Children Ministry](https://www.theforsakenchildren.org/) allows them to have the transforming Gospel of Jesus Christ to be a central component of the program.
 
 <hr />
 
@@ -32,4 +32,4 @@ For more than 70 years, [Wycliffe](https://www.wycliffe.org/) has helped people 
 
 As a church, we also keep informed and updated with organizations of which some in our church support through private gifts or have done mission work with:
 
-* [The Voice of the Martyrs](https://www.persecution.com/)
+- [The Voice of the Martyrs](https://www.persecution.com/)

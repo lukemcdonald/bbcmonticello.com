@@ -1,27 +1,27 @@
 ---
-import FacebookIcon from './icons/FacebookIcon.astro';
-import MenuIcon from './icons/MenuIcon.astro';
+import FacebookIcon from './icons/FacebookIcon.astro'
+import MenuIcon from './icons/MenuIcon.astro'
 
-const { pathname } = Astro.url;
+const { pathname } = Astro.url
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/calendar', label: 'Calendar' },
   { href: '/missions', label: 'Missions' },
   { href: '/contact', label: 'Contact' },
-];
+]
 
 function isActiveLink(href: string, pathname: string): boolean {
-  return href === pathname || href === pathname.replace(/\/$/, '');
+  return href === pathname || href === pathname.replace(/\/$/, '')
 }
 ---
 
 <script>
-  const toggle = document.querySelector('#primary-nav button');
-  const nav = document.querySelector('#primary-nav nav');
+  const toggle = document.querySelector('#primary-nav button')
+  const nav = document.querySelector('#primary-nav nav')
   toggle?.addEventListener('click', () => {
-    nav?.classList.toggle('hidden');
-  });
+    nav?.classList.toggle('hidden')
+  })
 </script>
 
 <section id="primary-nav" class="sticky top-0 z-30 bg-white text-gray-900 shadow">
@@ -39,7 +39,7 @@ function isActiveLink(href: string, pathname: string): boolean {
       >
         {
           links.map((link) => {
-            const isActive = isActiveLink(link.href, pathname);
+            const isActive = isActiveLink(link.href, pathname)
 
             return (
               <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
@@ -50,7 +50,7 @@ function isActiveLink(href: string, pathname: string): boolean {
                   {link.label}
                 </a>
               </li>
-            );
+            )
           })
         }
       </ul>

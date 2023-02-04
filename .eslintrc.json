@@ -1,10 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc",
   "root": true,
-  "extends": [
-    "prettier",
-    "plugin:tailwindcss/recommended"
-  ],
+  "extends": ["prettier", "plugin:tailwindcss/recommended"],
   "plugins": ["tailwindcss"],
   "rules": {
     "react/jsx-key": "off",

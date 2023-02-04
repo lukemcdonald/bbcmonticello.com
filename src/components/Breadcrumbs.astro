@@ -1,14 +1,14 @@
 ---
 export interface Breadcrumb {
-  href: string | URL;
-  label: string;
+  href: string | URL
+  label: string
 }
 
 export interface Props {
-  links: Breadcrumb[];
+  links: Breadcrumb[]
 }
 
-const { links } = Astro.props;
+const { links } = Astro.props
 ---
 
 <section
@@ -17,7 +17,7 @@ const { links } = Astro.props;
   <div class="flex gap-3 px-6 lg:container">
     {
       links.map((link: Breadcrumb, idx: number) => {
-        const isLast = idx === links.length - 1;
+        const isLast = idx === links.length - 1
         return (
           <>
             {!isLast ? (
@@ -33,7 +33,7 @@ const { links } = Astro.props;
               </span>
             )}
           </>
-        );
+        )
       })
     }
   </div>
