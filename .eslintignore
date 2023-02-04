@@ -1,3 +1,6 @@
-/node_modules
-/dist
+dist/*
+.cache
+public
+node_modules
+*.esm.js
 /.output

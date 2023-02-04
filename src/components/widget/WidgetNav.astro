@@ -1,17 +1,17 @@
 ---
-import Widget from './Widget.astro';
+import Widget from './Widget.astro'
 
 interface NavItem {
-  label: string;
-  href: string;
+  label: string
+  href: string
 }
 
 export interface Props {
-  title: string;
-  items: NavItem[];
+  title: string
+  items: NavItem[]
 }
 
-const { items, title } = Astro.props;
+const { items, title } = Astro.props
 ---
 
 <Widget title={title}>

@@ -1,14 +1,11 @@
-# build output
 .output/
 dist/
 public/
-
-# dependencies
 node_modules/
-
-# logs
 npm-debug.log*
-
-# environment variables
 .env
 .env.production
+package-lock.json
+.yarn
+cache
+.cache
