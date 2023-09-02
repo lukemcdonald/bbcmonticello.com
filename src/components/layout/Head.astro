@@ -1,5 +1,6 @@
 ---
-import '../../styles/global.css'
+import { ViewTransitions } from 'astro:transitions';
+import '../../styles/global.css';
 
 export interface Props {
   description: string
@@ -7,7 +8,11 @@ export interface Props {
   title: string
 }
 
-const { description, image = '/bbc-diamond-banner-2.jpg', title } = Astro.props
+const {
+  description,
+  image = '/bbc-diamond-banner-2.jpg',
+  title
+} = Astro.props
 ---
 
 <head>
@@ -21,6 +26,9 @@ const { description, image = '/bbc-diamond-banner-2.jpg', title } = Astro.props
   <title>{title}</title>
   <meta name="title" content={title} />
   <meta name="description" content={description} />
+
+  <!-- Astro -->
+  <ViewTransitions />
 
   <!-- Google -->
   <meta name="google-site-verification" content="Ua3-yrg0f1qjkE74afVsNPJZjCHzuOIleJThz2Oj7GY" />
