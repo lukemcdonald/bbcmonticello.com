@@ -1,12 +1,14 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../config'
 
+import Hero from '../components/Hero.astro'
 import Body from '../components/layout/Body.astro'
+import Content from '../components/layout/Content.astro'
 import Footer from '../components/layout/Footer.astro'
 import Head from '../components/layout/Head.astro'
 import Header from '../components/layout/Header.astro'
-import Hero from '../components/Hero.astro'
 import Html from '../components/layout/Html.astro'
+import Main from '../components/layout/Main.astro'
 ---
 
 <Html>
@@ -16,6 +18,16 @@ import Html from '../components/layout/Html.astro'
     <Header>
       <Hero image="/bbc-hero.jpg" />
     </Header>
+    <Content>
+      <Main>
+        <div class="prose mt-6 max-w-none">
+          <p><strong>Beginning on October 1st, 2023, Berean Bible Church is meeting for Sunday worship at our facility located at:</strong></p>
+          <p></strong>16107 County Road E16 – Monticello</strong> (This is the Lower Prairieburg Road.)</p>
+          <p></strong>Sunday Morning Worship begins at 9:30 AM</strong></p>
+          <p>We will no longer be meeting at the Community Building in Monticello.</p>
+        </div>
+      </Main>
+    </Content>
     <Footer />
   </Body>
 </Html>
