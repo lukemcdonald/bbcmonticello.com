@@ -35,14 +35,14 @@ const { description, image, title } = Astro.props
   <meta property="og:url" content={Astro.url} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(image, Astro.url)} />
+  {image && <meta property="og:image" content={new URL(image, Astro.url)} />}
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content={Astro.url} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+  {image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
@@ -52,7 +52,5 @@ const { description, image, title } = Astro.props
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Children -->
   <slot />
 </head>
