@@ -1,29 +1,18 @@
 /** @type {import('prettier').Config} */
 module.exports = {
-  endOfLine: 'lf',
-  importOrder: [
-    '^(react/(.*)$)|^(react$)',
-    '^(next/(.*)$)|^(next$)',
-    '<THIRD_PARTY_MODULES>',
-    '',
-    '^types$',
-    '^@/types/(.*)$',
-    '^@/config/(.*)$',
-    '^@/lib/(.*)$',
-    '^@/components/(.*)$',
-    '^@/styles/(.*)$',
-    '^[./]',
+  experimentalTernaries: true,
+  overrides: [
+    {
+      files: '*.astro',
+      options: {
+        parser: 'astro',
+      },
+    },
   ],
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderBuiltinModulesToTop: true,
-  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
-  importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true,
-  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   printWidth: 100,
+  proseWrap: 'preserve',
   semi: false,
+  singleAttributePerLine: true,
   singleQuote: true,
-  tabWidth: 2,
-  trailingComma: 'es5',
 }
