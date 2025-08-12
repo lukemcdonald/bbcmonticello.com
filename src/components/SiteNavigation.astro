@@ -17,15 +17,6 @@ function isActiveLink(href: string, pathname: string): boolean {
 }
 ---
 
-<script>
-  const toggle = document.querySelector('#primary-nav button')
-  const nav = document.querySelector('#primary-nav nav')
-
-  toggle?.addEventListener('click', () => {
-    nav?.classList.toggle('hidden')
-  })
-</script>
-
 <section
   id="primary-nav"
   class="sticky top-0 z-30 bg-white text-gray-900 shadow-sm"
@@ -74,3 +65,17 @@ function isActiveLink(href: string, pathname: string): boolean {
     </a>
   </div>
 </section>
+
+<script is:inline>
+  const nav = document.querySelector('#primary-nav nav')
+  const toggle = document.getElementById('nav-toggle')
+
+  const onClick = () => {
+    nav?.classList.toggle('hidden')
+    // Optional a11y:
+    const expanded = toggle?.getAttribute('aria-expanded') === 'true'
+    toggle?.setAttribute('aria-expanded', expanded ? 'false' : 'true')
+  }
+
+  toggle?.addEventListener('click', onClick)
+</script>
