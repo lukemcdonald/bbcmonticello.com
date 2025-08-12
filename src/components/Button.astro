@@ -13,13 +13,18 @@ const styles = {
 ---
 
 {
-  to ? (
-    <a class:list={[styles.base, className]} href={to} {...props}>
+  to ?
+    <a
+      class:list={[styles.base, className]}
+      href={to}
+      {...props}
+    >
       <slot />
     </a>
-  ) : (
-    <button class:list={[styles.base, className]} {...props}>
+  : <button
+      class:list={[styles.base, className]}
+      {...props}
+    >
       <slot />
     </button>
-  )
 }

@@ -20,13 +20,16 @@ const {
 } = Astro.props
 
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
-  { label: title, href: Astro.url },
+  { href: '/', label: 'Home' },
+  { href: Astro.url, label: title },
 ]
 ---
 
 <Html>
-  <Head title={title} description={description} />
+  <Head
+    title={title}
+    description={description}
+  />
 
   <Body>
     <Header breadcrumbs={breadcrumbs} />

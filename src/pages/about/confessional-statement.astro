@@ -15,8 +15,8 @@ const description =
   'The following Confessional Statement is presented here with the permission of The Gospel Coalition of which Berean Bible Church is a member.'
 
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
-  { label: title, href: Astro.url },
+  { href: '/', label: 'Home' },
+  { href: Astro.url, label: title },
 ]
 
 const toc = [
@@ -36,7 +36,10 @@ const toc = [
 ---
 
 <Html>
-  <Head title={title} description={description} />
+  <Head
+    title={title}
+    description={description}
+  />
 
   <Body>
     <Header breadcrumbs={breadcrumbs} />
@@ -283,7 +286,10 @@ const toc = [
       </Main>
 
       <Sidebar>
-        <WidgetNav title="Table of Contents" items={toc} />
+        <WidgetNav
+          title="Table of Contents"
+          items={toc}
+        />
       </Sidebar>
     </Content>
     <Footer />

@@ -10,9 +10,17 @@ export interface Props {
 const { breadcrumbs } = Astro.props
 ---
 
-<a class="skip-link sr-only" href="#content">Skip to content</a>
+<a
+  class="skip-link sr-only"
+  href="#content"
+  >Skip to content</a
+>
 
-<header id="masthead" class="relative z-50 bg-primary-500 text-white" role="banner">
+<header
+  id="masthead"
+  class="relative z-50 bg-primary-500 text-white"
+  role="banner"
+>
   <SiteNavigation />
   <SiteIdentity />
   {breadcrumbs ? <Breadcrumbs links={breadcrumbs} /> : null}

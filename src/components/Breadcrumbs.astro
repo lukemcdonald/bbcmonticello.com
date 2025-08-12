@@ -20,18 +20,20 @@ const { links } = Astro.props
         const isLast = idx === links.length - 1
         return (
           <>
-            {!isLast ? (
+            {!isLast ?
               <>
                 <span>
                   <a href={link.href}>{link.label}</a>
                 </span>
                 <span class="sep">⟩</span>
               </>
-            ) : (
-              <span class="breadcrumb_last" aria-current="page">
+            : <span
+                class="breadcrumb_last"
+                aria-current="page"
+              >
                 {link.label}
               </span>
-            )}
+            }
           </>
         )
       })
