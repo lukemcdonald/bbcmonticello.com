@@ -12,9 +12,9 @@ const { links } = Astro.props
 ---
 
 <section
-  class="relative bg-secondary-200 py-4 font-sans text-xs uppercase tracking-widest text-secondary-800"
+  class="bg-secondary-200 text-secondary-800 relative py-4 font-sans text-xs tracking-widest uppercase"
 >
-  <div class="flex gap-3 px-6 lg:container">
+  <div class="flex gap-3 px-6 2xl:container 2xl:mx-auto">
     {
       links.map((link: Breadcrumb, idx: number) => {
         const isLast = idx === links.length - 1

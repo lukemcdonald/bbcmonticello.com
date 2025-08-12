@@ -16,8 +16,8 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   site: 'https://bbcmonticello.com/',
   trailingSlash: 'never',
-})
   vite: {
     // @ts-expect-error https://github.com/withastro/astro/issues/14030
     plugins: [tailwindcss()],
   },
+})

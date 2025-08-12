@@ -7,6 +7,7 @@ import Head from '@/components/layout/Head.astro'
 import Header from '@/components/layout/Header.astro'
 import Html from '@/components/layout/Html.astro'
 import Main from '@/components/layout/Main.astro'
+import Prose from '@/components/Prose.astro'
 
 export interface Props {
   content: {
@@ -40,9 +41,9 @@ const breadcrumbs = [
             <EntryTitle>{title}</EntryTitle>
           </header>
         </article>
-        <div class="prose mt-6 max-w-none">
+        <Prose class="mt-6">
           <slot />
-        </div>
+        </Prose>
       </Main>
     </Content>
     <Footer />
