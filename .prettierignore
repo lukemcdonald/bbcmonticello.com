@@ -1,11 +1,28 @@
-.output/
-dist/
-public/
+# Dependencies
 node_modules/
-npm-debug.log*
-.env
-.env.production
 package-lock.json
-.yarn
-cache
-.cache
+
+# Build outputs
+dist/
+.astro/
+.netlify/
+public/_redirects
+
+# Generated files
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/

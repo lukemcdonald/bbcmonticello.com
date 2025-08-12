@@ -1,7 +1,7 @@
 ---
-import Breadcrumbs, { type Breadcrumb } from '../Breadcrumbs.astro'
-import SiteIdentity from '../SiteIdentity.astro'
-import SiteNavigation from '../SiteNavigation.astro'
+import Breadcrumbs, { type Breadcrumb } from '@/components/Breadcrumbs.astro'
+import SiteIdentity from '@/components/SiteIdentity.astro'
+import SiteNavigation from '@/components/SiteNavigation.astro'
 
 export interface Props {
   breadcrumbs?: Breadcrumb[]
@@ -10,9 +10,17 @@ export interface Props {
 const { breadcrumbs } = Astro.props
 ---
 
-<a class="skip-link sr-only" href="#content">Skip to content</a>
+<a
+  class="skip-link sr-only"
+  href="#content"
+  >Skip to content</a
+>
 
-<header id="masthead" class="relative z-50 bg-primary-500 text-white" role="banner">
+<header
+  id="masthead"
+  class="relative z-50 bg-primary-500 text-white"
+  role="banner"
+>
   <SiteNavigation />
   <SiteIdentity />
   {breadcrumbs ? <Breadcrumbs links={breadcrumbs} /> : null}

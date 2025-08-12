@@ -1,5 +1,5 @@
 ---
-import Widget from '../widget/Widget.astro'
+import Widget from '@/components/widget/Widget.astro'
 
 const today = new Date()
 ---
@@ -7,7 +7,10 @@ const today = new Date()
 <footer role="contentinfo">
   <slot />
 
-  <aside id="footer-widgets" role="complementary">
+  <aside
+    id="footer-widgets"
+    role="complementary"
+  >
     <div class="px-6 lg:container">
       <div
         class="widget-area grid grid-cols-1 gap-6 border-t border-gray-200 py-8 md:grid-cols-3 md:gap-16 lg:py-16"
@@ -34,7 +37,10 @@ const today = new Date()
     </div>
   </aside>
 
-  <section id="site-credits" class="text-sm">
+  <section
+    id="site-credits"
+    class="text-sm"
+  >
     <div class="px-6 lg:container">
       <div class="border-t border-gray-200 py-8">
         &copy; Berean Bible Church {today.getFullYear()}
