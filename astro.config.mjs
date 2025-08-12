@@ -2,7 +2,7 @@
 import netlify from '@astrojs/netlify'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
@@ -13,7 +13,11 @@ export default defineConfig({
     layout: 'constrained',
     responsiveStyles: false,
   },
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap()],
   site: 'https://bbcmonticello.com/',
   trailingSlash: 'never',
+  vite: {
+    // @ts-expect-error https://github.com/withastro/astro/issues/14030
+    plugins: [tailwindcss()],
+  },
 })

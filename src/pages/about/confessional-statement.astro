@@ -8,6 +8,8 @@ import Header from '@/components/layout/Header.astro'
 import Html from '@/components/layout/Html.astro'
 import Main from '@/components/layout/Main.astro'
 import Sidebar from '@/components/layout/Sidebar.astro'
+import Lead from '@/components/Lead.astro'
+import Prose from '@/components/Prose.astro'
 import WidgetNav from '@/components/widget/WidgetNav.astro'
 
 const title = 'Confessional Statement'
@@ -51,11 +53,11 @@ const toc = [
             <EntryTitle>{title}</EntryTitle>
           </header>
 
-          <div class="prose mt-6 max-w-none">
-            <p class="lead">
+          <Prose class="mt-6">
+            <Lead>
               The following Confessional Statement is presented here with the permission of The
               Gospel Coalition of which Berean Bible Church is a member.
-            </p>
+            </Lead>
 
             <h2 id="the-triune-god">1. The Tri-une God</h2>
 
@@ -281,7 +283,7 @@ const toc = [
               immediacy of his ineffable holiness, and everything will be to the praise of his
               glorious grace.
             </p>
-          </div>
+          </Prose>
         </article>
       </Main>
 

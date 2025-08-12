@@ -1,7 +1,7 @@
 ---
-import '../../styles/global.css'
+import '@/styles/global.css'
 
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 export interface Props {
   description: string
@@ -19,14 +19,22 @@ const { description, image, title } = Astro.props
     name="viewport"
     content="width=device-width,initial-scale=1"
   />
+  <meta
+    name="generator"
+    content={Astro.generator}
+  />
+
+  <!-- Favicon -->
   <link
     rel="icon"
     type="image/svg+xml"
     href="/favicon.svg"
   />
-  <meta
-    name="generator"
-    content={Astro.generator}
+
+  <!-- Sitemap -->
+  <link
+    rel="sitemap"
+    href="/sitemap-index.xml"
   />
 
   <!-- Primary Meta Tags -->
@@ -39,9 +47,6 @@ const { description, image, title } = Astro.props
     name="description"
     content={description}
   />
-
-  <!-- Astro -->
-  <ViewTransitions />
 
   <!-- Google -->
   <meta
@@ -119,5 +124,9 @@ const { description, image, title } = Astro.props
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet"
   />
+
   <slot />
+
+  <!-- View Transitions API -->
+  <ClientRouter />
 </head>

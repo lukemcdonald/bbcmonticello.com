@@ -15,4 +15,5 @@ module.exports = {
   semi: false,
   singleAttributePerLine: true,
   singleQuote: true,
+  tailwindStylesheet: './src/styles/global.css',
 }
