@@ -26,12 +26,16 @@ function isActiveLink(href: string, pathname: string): boolean {
   >
     <button
       id="nav-toggle"
-      class="focus:text-primary-600 flex items-center gap-1 rounded-none bg-transparent px-3 py-2 font-sans leading-none text-gray-900 uppercase lg:hidden"
+      class="flex items-center gap-1 rounded-none bg-transparent px-3 py-2 font-sans leading-none text-gray-900 uppercase focus:text-primary-600 lg:hidden"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-haspopup="true"
     >
       <MenuIcon class="inline-block h-6 w-6" />
       <span class="inline-block text-xs">Menu</span>
     </button>
     <nav
+      id="site-nav"
       class="hidden lg:block"
       role="navigation"
     >
@@ -45,7 +49,7 @@ function isActiveLink(href: string, pathname: string): boolean {
             return (
               <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
                 <a
-                  class="hover:text-primary-500 relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase"
+                  class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
                   href={link.href}
                 >
                   {link.label}
@@ -66,16 +70,13 @@ function isActiveLink(href: string, pathname: string): boolean {
   </div>
 </section>
 
-<script is:inline>
-  const nav = document.querySelector('#primary-nav nav')
-  const toggle = document.getElementById('nav-toggle')
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('nav-toggle')
+    const nav = document.getElementById('site-nav')
 
-  const onClick = () => {
-    nav?.classList.toggle('hidden')
-    // Optional a11y:
-    const expanded = toggle?.getAttribute('aria-expanded') === 'true'
-    toggle?.setAttribute('aria-expanded', expanded ? 'false' : 'true')
-  }
-
-  toggle?.addEventListener('click', onClick)
+    toggle?.addEventListener('click', () => {
+      nav?.classList.toggle('hidden')
+    })
+  })
 </script>
