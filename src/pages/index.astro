@@ -9,6 +9,7 @@ import Html from '@/components/layout/Html.astro'
 import Main from '@/components/layout/Main.astro'
 import Prose from '@/components/Prose.astro'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
+import heroImage from '@/assets/bbc-hero.jpg'
 ---
 
 <Html>
@@ -20,7 +21,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
   <Body>
     <Header>
       <Hero
-        image="/bbc-hero.jpg"
+        image={heroImage}
         imageAlt="Berean Bible Church building exterior"
       />
     </Header>
