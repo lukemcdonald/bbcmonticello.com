@@ -9,9 +9,6 @@
   --breakpoint-md: 768px;
   --breakpoint-sm: 568px;
 
-  --font-sans: Lato, ui-sans-serif, system-ui, sans-serif;
-  --font-serif: Merriweather, ui-serif, Georgia, serif;
-
   --color-gray-100: #f9f9f8;
   --color-gray-200: #e2e0dc;
   --color-gray-300: #cac8c1;
@@ -41,6 +38,15 @@
   --color-secondary-700: #715e2a;
   --color-secondary-800: #4c3f1c;
   --color-secondary-900: #27200e;
+}
+
+@theme inline {
+  --font-sans: var(--font-lato);
+  --font-serif: var(--font-merriweather);
+}
+
+@view-transition {
+  navigation: auto;
 }
 
 body {
