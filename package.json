@@ -19,7 +19,8 @@
     "lint:fix": "eslint ./src --fix --report-unused-disable-directives",
     "preview": "netlify deploy --build --message \"preview $(git rev-parse --short HEAD)\"",
     "start": "npm run dev",
-    "validate": "npm run -s lint && npm run -s format:check && npm run -s check"
+    "typecheck": "astro check",
+    "validate": "npm run -s lint && npm run -s format:check && npm run -s typecheck"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
