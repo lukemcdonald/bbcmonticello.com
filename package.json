@@ -6,7 +6,7 @@
   "scripts": {
     "astro": "astro",
     "audit:code": "fallow audit && fallow health --score --hotspots --summary",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-redirect-targets.mjs",
     "check": "astro check",
     "clean": "rm -rf .astro dist node_modules",
     "deploy:prod": "netlify deploy --build --prod",
