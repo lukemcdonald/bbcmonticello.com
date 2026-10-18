@@ -1,6 +1,7 @@
 ---
 import FacebookIcon from '@/components/icons/FacebookIcon.astro'
 import MenuIcon from '@/components/icons/MenuIcon.astro'
+import { SITE_FACEBOOK_URL } from '@/config'
 import { normalizePath } from '@/lib/pathname'
 
 const { pathname } = Astro.url
@@ -71,7 +72,7 @@ function isCurrentPage(href: string, pathname: string): boolean {
     </nav>
 
     <a
-      href="https://www.facebook.com/bbcmonticello/"
+      href={SITE_FACEBOOK_URL}
       aria-label="Facebook"
     >
       <FacebookIcon class="h-6 w-6" />

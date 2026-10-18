@@ -1,5 +1,6 @@
 ---
 import Widget from '@/components/widget/Widget.astro'
+import { SITE_WORSHIP } from '@/config'
 
 const today = new Date()
 ---
@@ -28,7 +29,9 @@ const today = new Date()
         </Widget>
 
         <Widget title="Sunday Worship">
-          <p>Every Sunday morning at our church facility from 9:30-11:00 a.m.</p>
+          <p>
+            Every Sunday morning at our church facility from {SITE_WORSHIP.sundayMorning.timeRange}
+          </p>
         </Widget>
       </div>
     </div>

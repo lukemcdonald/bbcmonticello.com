@@ -9,7 +9,7 @@ import Header from '@/components/layout/Header.astro'
 import Html from '@/components/layout/Html.astro'
 import Main from '@/components/layout/Main.astro'
 import Prose from '@/components/Prose.astro'
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_WORSHIP } from '@/config'
 ---
 
 <Html>
@@ -37,7 +37,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
             <strong>16107 County Road E16 – Monticello</strong> (This is the Lower Prairieburg
             Road.)
           </p>
-          <p><strong>Sunday Morning Worship begins at 9:30 AM</strong></p>
+          <p>
+            <strong>Sunday Morning Worship begins at {SITE_WORSHIP.sundayMorning.homeStart}</strong>
+          </p>
         </Prose>
       </Main>
     </Content>
