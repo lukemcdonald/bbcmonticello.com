@@ -14,7 +14,7 @@ export const SITE_DESCRIPTION =
 
 export const SITE_FACEBOOK_URL = 'https://www.facebook.com/bbcmonticello/'
 
-export const SITE_GEO = {
+const SITE_GEO = {
   latitude: 42.2248147,
   longitude: -91.190385,
 }
