@@ -67,12 +67,10 @@ function isActiveLink(href: string, pathname: string): boolean {
 </section>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const toggle = document.getElementById('nav-toggle')
-    const nav = document.getElementById('site-nav')
+  const toggle = document.getElementById('nav-toggle')
+  const nav = document.getElementById('site-nav')
 
-    toggle?.addEventListener('click', () => {
-      nav?.classList.toggle('hidden')
-    })
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('hidden')
   })
 </script>
