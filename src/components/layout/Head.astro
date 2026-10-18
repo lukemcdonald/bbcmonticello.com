@@ -10,6 +10,7 @@ export interface Props {
 }
 
 const { description, image, title } = Astro.props
+const pageUrl = Astro.url.pathname === '/index.html' ? new URL('/', Astro.url) : Astro.url
 ---
 
 <head>
@@ -61,7 +62,7 @@ const { description, image, title } = Astro.props
   />
   <meta
     property="og:url"
-    content={Astro.url}
+    content={pageUrl}
   />
   <meta
     property="og:title"
@@ -75,7 +76,7 @@ const { description, image, title } = Astro.props
     image && (
       <meta
         property="og:image"
-        content={new URL(image, Astro.url)}
+        content={new URL(image, pageUrl)}
       />
     )
   }
@@ -87,7 +88,7 @@ const { description, image, title } = Astro.props
   />
   <meta
     property="twitter:url"
-    content={Astro.url}
+    content={pageUrl}
   />
   <meta
     property="twitter:title"
@@ -101,7 +102,7 @@ const { description, image, title } = Astro.props
     image && (
       <meta
         property="twitter:image"
-        content={new URL(image, Astro.url)}
+        content={new URL(image, pageUrl)}
       />
     )
   }

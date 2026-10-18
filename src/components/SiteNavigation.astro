@@ -2,7 +2,7 @@
 import FacebookIcon from '@/components/icons/FacebookIcon.astro'
 import MenuIcon from '@/components/icons/MenuIcon.astro'
 
-const { pathname } = Astro.url
+const pathname = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },

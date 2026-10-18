@@ -23,11 +23,10 @@
     "validate": "npm run -s lint && npm run -s format:check && npm run -s typecheck"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.14",
-    "@astrojs/netlify": "^6.6.5",
+    "@astrojs/mdx": "^8.1.0",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^5.18.2",
-    "sharp": "^0.33.5"
+    "astro": "^7.4.0",
+    "sharp": "^0.35.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
