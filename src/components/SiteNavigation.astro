@@ -12,8 +12,15 @@ const links = [
   { href: '/contact', label: 'Contact' },
 ]
 
+function normalizePath(path: string): string {
+  const withoutFile = path.replace(/\.html$/, '')
+  const withoutSlash = withoutFile.replace(/\/$/, '')
+
+  return withoutSlash || '/'
+}
+
 function isActiveLink(href: string, pathname: string): boolean {
-  return href === pathname || href === pathname.replace(/\/$/, '')
+  return normalizePath(href) === normalizePath(pathname)
 }
 ---
 
