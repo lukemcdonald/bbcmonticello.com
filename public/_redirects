@@ -2,10 +2,9 @@
 
 https://bbcmonticello.netlify.com/*   https://bbcmonticello.com/:splat 301!
 
-/sitemap-index.xml      /sitemap-index.xml        200
-
 /blog/:slug/            /                         301
-/blog/author/:author/   /												  301
-/bible-studies/         /ministries/              301
-/sunday-school/         /ministries/              301
-/vbs/                   /ministries/              301
+/blog/author/:author/   /                         301
+/bible-studies/         /calendar                 301
+/ministries/            /calendar                 301
+/sunday-school/         /calendar                 301
+/vbs/                   /calendar                 301
