@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const { breadcrumbs } = Astro.props
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html'
 ---
 
 <a
@@ -22,7 +23,7 @@ const { breadcrumbs } = Astro.props
   role="banner"
 >
   <SiteNavigation />
-  <SiteIdentity />
+  <SiteIdentity isHome={isHome} />
   {breadcrumbs ?
     <Breadcrumbs links={breadcrumbs} />
   : null}
