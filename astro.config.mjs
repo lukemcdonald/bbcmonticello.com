@@ -15,6 +15,7 @@ export default defineConfig({
       name: 'Lato',
       provider: fontProviders.google(),
       styles: ['normal'],
+      subsets: ['latin'],
       weights: [400, 700],
     },
     {
@@ -23,6 +24,7 @@ export default defineConfig({
       name: 'Merriweather',
       provider: fontProviders.google(),
       styles: ['italic', 'normal'],
+      subsets: ['latin'],
       weights: [400, 700],
     },
   ],
@@ -31,6 +33,7 @@ export default defineConfig({
     responsiveStyles: false,
   },
   integrations: [mdx(), sitemap()],
+  prefetch: true,
   site: 'https://bbcmonticello.com/',
   trailingSlash: 'never',
   vite: {
