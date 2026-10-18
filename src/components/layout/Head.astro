@@ -72,14 +72,12 @@ const pageUrl = Astro.url.pathname === '/index.html' ? new URL('/', Astro.url) :
     property="og:description"
     content={description}
   />
-  {
-    image && (
-      <meta
-        property="og:image"
-        content={new URL(image, pageUrl)}
-      />
-    )
-  }
+  {image && (
+    <meta
+      property="og:image"
+      content={new URL(image, pageUrl)}
+    />
+  )}
 
   <!-- Twitter -->
   <meta
@@ -98,14 +96,12 @@ const pageUrl = Astro.url.pathname === '/index.html' ? new URL('/', Astro.url) :
     property="twitter:description"
     content={description}
   />
-  {
-    image && (
-      <meta
-        property="twitter:image"
-        content={new URL(image, pageUrl)}
-      />
-    )
-  }
+  {image && (
+    <meta
+      property="twitter:image"
+      content={new URL(image, pageUrl)}
+    />
+  )}
 
   <!-- Fonts -->
   <link

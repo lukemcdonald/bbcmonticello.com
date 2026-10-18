@@ -42,22 +42,18 @@ function isActiveLink(href: string, pathname: string): boolean {
       <ul
         class="absolute top-full right-0 left-0 list-none divide-y divide-gray-100 bg-gray-200 font-sans lg:static lg:-mx-4 lg:flex lg:divide-y-0 lg:bg-transparent lg:text-inherit lg:shadow-none"
       >
-        {
-          links.map((link) => {
-            const isActive = isActiveLink(link.href, pathname)
+        {links.map((link) => {
+          const isActive = isActiveLink(link.href, pathname)
 
-            return (
-              <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
-                <a
-                  class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
-                  href={link.href}
-                >
-                  {link.label}
-                </a>
-              </li>
-            )
-          })
-        }
+          return <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
+            <a
+              class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          </li>
+        })}
       </ul>
     </nav>
 

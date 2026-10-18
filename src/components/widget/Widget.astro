@@ -11,7 +11,9 @@ const { prose = true, title } = Astro.props
 ---
 
 <div class="text-base">
-  {title ? <WidgetTitle>{title}</WidgetTitle> : null}
+  {title ?
+    <WidgetTitle>{title}</WidgetTitle>
+  : null}
   <Prose
     as="div"
     class:list={[!prose ? 'not-prose' : null]}
