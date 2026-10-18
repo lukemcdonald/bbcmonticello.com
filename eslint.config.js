@@ -7,6 +7,7 @@ import tsEslint from 'typescript-eslint'
 export default defineConfig([
   ...tsEslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
+  ...eslintPluginAstro.configs['jsx-a11y-recommended'],
   {
     languageOptions: {
       globals: {
