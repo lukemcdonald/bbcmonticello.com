@@ -1,8 +1,10 @@
 ---
 import FacebookIcon from '@/components/icons/FacebookIcon.astro'
 import MenuIcon from '@/components/icons/MenuIcon.astro'
+import { SITE_FACEBOOK_URL } from '@/config'
+import { normalizePath } from '@/lib/pathname'
 
-const pathname = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname
+const { pathname } = Astro.url
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -13,7 +15,18 @@ const links = [
 ]
 
 function isActiveLink(href: string, pathname: string): boolean {
-  return href === pathname || href === pathname.replace(/\/$/, '')
+  const current = normalizePath(pathname)
+  const target = normalizePath(href)
+
+  if (target === '/') {
+    return current === '/'
+  }
+
+  return current === target || current.startsWith(`${target}/`)
+}
+
+function isCurrentPage(href: string, pathname: string): boolean {
+  return normalizePath(href) === normalizePath(pathname)
 }
 ---
 
@@ -27,9 +40,8 @@ function isActiveLink(href: string, pathname: string): boolean {
     <button
       id="nav-toggle"
       class="flex items-center gap-1 rounded-none bg-transparent px-3 py-2 font-sans leading-none text-gray-900 uppercase focus:text-primary-600 lg:hidden"
-      aria-expanded="false"
       aria-controls="site-nav"
-      aria-haspopup="true"
+      aria-expanded="false"
     >
       <MenuIcon class="inline-block h-6 w-6" />
       <span class="inline-block text-xs">Menu</span>
@@ -37,16 +49,18 @@ function isActiveLink(href: string, pathname: string): boolean {
     <nav
       id="site-nav"
       class="hidden lg:block"
-      role="navigation"
+      aria-label="Primary"
     >
       <ul
         class="absolute top-full right-0 left-0 list-none divide-y divide-gray-100 bg-gray-200 font-sans lg:static lg:-mx-4 lg:flex lg:divide-y-0 lg:bg-transparent lg:text-inherit lg:shadow-none"
       >
         {links.map((link) => {
           const isActive = isActiveLink(link.href, pathname)
+          const isCurrent = isCurrentPage(link.href, pathname)
 
           return <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
             <a
+              aria-current={isCurrent ? 'page' : undefined}
               class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
               href={link.href}
             >
@@ -58,7 +72,7 @@ function isActiveLink(href: string, pathname: string): boolean {
     </nav>
 
     <a
-      href="https://www.facebook.com/bbcmonticello/"
+      href={SITE_FACEBOOK_URL}
       aria-label="Facebook"
     >
       <FacebookIcon class="h-6 w-6" />
@@ -67,10 +81,31 @@ function isActiveLink(href: string, pathname: string): boolean {
 </section>
 
 <script>
-  const toggle = document.getElementById('nav-toggle')
   const nav = document.getElementById('site-nav')
+  const toggle = document.getElementById('nav-toggle')
 
-  toggle?.addEventListener('click', () => {
-    nav?.classList.toggle('hidden')
-  })
+  if (nav && toggle) {
+    const menu = nav
+    const trigger = toggle
+
+    function isExpanded() {
+      return trigger.getAttribute('aria-expanded') === 'true'
+    }
+
+    function setExpanded(expanded: boolean) {
+      menu.classList.toggle('hidden', !expanded)
+      trigger.setAttribute('aria-expanded', String(expanded))
+    }
+
+    trigger.addEventListener('click', () => {
+      setExpanded(!isExpanded())
+    })
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isExpanded()) {
+        setExpanded(false)
+        trigger.focus()
+      }
+    })
+  }
 </script>

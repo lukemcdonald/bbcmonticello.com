@@ -1,6 +1,13 @@
 ---
 import Logo from '@/components/Logo.astro'
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
+import { SITE_ADDRESS, SITE_DESCRIPTION, SITE_MAPS_URL, SITE_TITLE } from '@/config'
+
+interface Props {
+  isHome?: boolean
+}
+
+const { isHome = false } = Astro.props
+const TitleTag = isHome ? 'h1' : 'p'
 ---
 
 <section>
@@ -16,11 +23,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
           <Logo />
         </a>
       </div>
-      <h1
+      <TitleTag
         class="sr-only font-sans text-2xl leading-tight font-normal tracking-widest uppercase lg:text-4xl"
       >
         {SITE_TITLE}
-      </h1>
+      </TitleTag>
       <p class="sr-only mb-0 hidden text-base leading-tight md:block">
         {SITE_DESCRIPTION}
       </p>
@@ -29,11 +36,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
       <address class="business-info mt-6 sm:mt-0 sm:text-right">
         <a
           class="block"
-          href="https://www.google.com/maps/place/Berean+Bible+Church/@42.2248147,-91.1925737,17z/data=!3m1!4b1!4m5!3m4!1s0x87e36074774e06bd:0xd8e7ca558df6812c!8m2!3d42.2248147!4d-91.190385"
+          href={SITE_MAPS_URL}
         >
-          <div class="sr-only font-bold">Berean Bible Church</div>
-          <div>16107 County Rd E16</div>
-          <div>Monticello, IA 52310</div>
+          <div class="sr-only font-bold">{SITE_TITLE}</div>
+          <div>{SITE_ADDRESS.street}</div>
+          <div>{SITE_ADDRESS.city}, {SITE_ADDRESS.region} {SITE_ADDRESS.postalCode}</div>
         </a>
       </address>
     </div>
