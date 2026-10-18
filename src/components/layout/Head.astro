@@ -3,6 +3,8 @@ import '@/styles/global.css'
 
 import { Font } from 'astro:assets'
 
+import { normalizePath } from '@/lib/pathname'
+
 export interface Props {
   description: string
   image?: string
@@ -10,7 +12,7 @@ export interface Props {
 }
 
 const { description, image, title } = Astro.props
-const pageUrl = Astro.url.pathname === '/index.html' ? new URL('/', Astro.url) : Astro.url
+const pageUrl = normalizePath(Astro.url.pathname) === '/' ? new URL('/', Astro.url) : Astro.url
 ---
 
 <head>

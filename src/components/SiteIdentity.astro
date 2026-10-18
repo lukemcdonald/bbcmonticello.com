@@ -1,6 +1,13 @@
 ---
 import Logo from '@/components/Logo.astro'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
+
+interface Props {
+  isHome?: boolean
+}
+
+const { isHome = false } = Astro.props
+const TitleTag = isHome ? 'h1' : 'p'
 ---
 
 <section>
@@ -16,11 +23,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@/config'
           <Logo />
         </a>
       </div>
-      <h1
+      <TitleTag
         class="sr-only font-sans text-2xl leading-tight font-normal tracking-widest uppercase lg:text-4xl"
       >
         {SITE_TITLE}
-      </h1>
+      </TitleTag>
       <p class="sr-only mb-0 hidden text-base leading-tight md:block">
         {SITE_DESCRIPTION}
       </p>
