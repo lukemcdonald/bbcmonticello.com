@@ -6,6 +6,7 @@ import { Font, getImage } from 'astro:assets'
 import ogImage from '@/assets/bbc-og.jpg'
 import { getChurchJsonLd, SITE_TITLE } from '@/config'
 import { normalizePath } from '@/lib/pathname'
+import { buildOgImagePath, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH } from '@/utils/og'
 
 export interface Props {
   description: string
@@ -19,12 +20,14 @@ const canonicalPath = normalizePath(Astro.url.pathname)
 const pageUrl = new URL(canonicalPath, site)
 const defaultOgImage = await getImage({
   format: 'jpg',
-  height: 630,
+  height: OG_IMAGE_HEIGHT,
   layout: 'none',
   src: ogImage,
-  width: 1200,
+  width: OG_IMAGE_WIDTH,
 })
-const socialImageUrl = new URL(image ?? defaultOgImage.src, site)
+const socialImagePath =
+  image ?? (canonicalPath === '/404' ? defaultOgImage.src : buildOgImagePath(canonicalPath))
+const socialImageUrl = new URL(socialImagePath, site)
 const churchJsonLd =
   canonicalPath === '/' ?
     JSON.stringify(
@@ -111,11 +114,11 @@ const churchJsonLd =
     <>
       <meta
         property="og:image:width"
-        content="1200"
+        content={String(OG_IMAGE_WIDTH)}
       />
       <meta
         property="og:image:height"
-        content="630"
+        content={String(OG_IMAGE_HEIGHT)}
       />
     </>
   )}

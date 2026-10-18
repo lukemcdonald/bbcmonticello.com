@@ -5,6 +5,7 @@
     "src/layouts/**/*.astro",
     "src/pages/**/*.astro",
     "src/pages/**/*.mdx",
+    "src/pages/**/*.ts",
   ],
   "ignoreDependencies": [
     // Resolved by Tailwind's CSS/config pipeline rather than JS imports.
