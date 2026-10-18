@@ -23,3 +23,21 @@ jobs:
       - run: npm ci
       - run: npm run validate
       - run: npm run build
+
+  audit:
+    name: Code health
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+      - run: npm ci
+      - name: Audit new issues vs PR base
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags origin "${{ github.base_ref }}"
+          npm exec -- fallow audit --base "origin/${{ github.base_ref }}"

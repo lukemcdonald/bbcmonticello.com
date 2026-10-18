@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/fallow/schema.json",
+  "entry": [
+    "astro.config.mjs",
+    "src/layouts/**/*.astro",
+    "src/pages/**/*.astro",
+    "src/pages/**/*.mdx",
+  ],
+  "ignoreDependencies": [
+    // Resolved by Tailwind's CSS/config pipeline rather than JS imports.
+    "@tailwindcss/typography",
+    "tailwindcss",
+    // Used by Astro's image pipeline (astro:assets) without a JS import.
+    "sharp",
+  ],
+  "ignoreExports": [
+    {
+      "exports": ["Props"],
+      "file": "**/*.astro",
+    },
+  ],
+}
