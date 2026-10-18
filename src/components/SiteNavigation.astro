@@ -64,17 +64,15 @@ function isCurrentPage(href: string, pathname: string): boolean {
           const isActive = isActiveLink(link.href, pathname)
           const isCurrent = isCurrentPage(link.href, pathname)
 
-          return (
-            <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
-              <a
-                aria-current={isCurrent ? 'page' : undefined}
-                class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
-                href={link.href}
-              >
-                {link.label}
-              </a>
-            </li>
-          )
+          return <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
+            <a
+              aria-current={isCurrent ? 'page' : undefined}
+              class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          </li>
         })}
       </ul>
     </nav>
