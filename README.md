@@ -20,12 +20,12 @@ npm run dev
 
 ## Scripts
 
-| Script              | What it does                    |
-| ------------------- | ------------------------------- |
-| `npm run fix`       | Lint + format fix               |
-| `npm run typecheck` | `astro check`                   |
-| `npm run validate`  | Lint, format check, typecheck   |
-| `npm run build`     | Production Astro build          |
+| Script              | What it does                  |
+| ------------------- | ----------------------------- |
+| `npm run fix`       | Lint + format fix             |
+| `npm run typecheck` | `astro check`                 |
+| `npm run validate`  | Lint, format check, typecheck |
+| `npm run build`     | Production Astro build        |
 
 CI runs `npm run validate && npm run build`.
 
