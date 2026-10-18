@@ -30,6 +30,10 @@ function titleFromSource(source: string, slug: string) {
   return pageTitle(source) ?? (slug === 'index' ? SITE_TITLE : undefined)
 }
 
+function pageMark(slug: string) {
+  return slug === 'index' ? '' : SITE_TITLE
+}
+
 export function getStaticPaths() {
   const paths = []
 
@@ -44,6 +48,7 @@ export function getStaticPaths() {
     paths.push({
       params: { slug },
       props: {
+        mark: pageMark(slug),
         title,
       },
     })
@@ -53,7 +58,7 @@ export function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const png = await renderOgPng({ title: props.title })
+  const png = await renderOgPng({ mark: props.mark, title: props.title })
 
   return new Response(Uint8Array.from(png), {
     headers: {
