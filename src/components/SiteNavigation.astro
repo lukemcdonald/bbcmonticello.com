@@ -14,12 +14,24 @@ const links = [
 
 function normalizePath(path: string): string {
   const withoutFile = path.replace(/\.html$/, '')
-  const withoutSlash = withoutFile.replace(/\/$/, '')
+  const withoutIndex = withoutFile.replace(/\/index$/, '')
+  const withoutSlash = withoutIndex.replace(/\/$/, '')
 
   return withoutSlash || '/'
 }
 
 function isActiveLink(href: string, pathname: string): boolean {
+  const current = normalizePath(pathname)
+  const target = normalizePath(href)
+
+  if (target === '/') {
+    return current === '/'
+  }
+
+  return current === target || current.startsWith(`${target}/`)
+}
+
+function isCurrentPage(href: string, pathname: string): boolean {
   return normalizePath(href) === normalizePath(pathname)
 }
 ---
@@ -50,11 +62,12 @@ function isActiveLink(href: string, pathname: string): boolean {
       >
         {links.map((link) => {
           const isActive = isActiveLink(link.href, pathname)
+          const isCurrent = isCurrentPage(link.href, pathname)
 
           return (
             <li class:list={['relative', isActive ? 'text-primary-500' : '']}>
               <a
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={isCurrent ? 'page' : undefined}
                 class="relative block px-4 py-4 text-sm leading-tight tracking-widest uppercase hover:text-primary-500"
                 href={link.href}
               >
