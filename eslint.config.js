@@ -1,11 +1,13 @@
 import eslintPluginAstro from 'eslint-plugin-astro'
-import globals from 'globals'
+import { defineConfig } from 'eslint/config'
 import perfectionist from 'eslint-plugin-perfectionist'
+import globals from 'globals'
 import tsEslint from 'typescript-eslint'
 
-export default [
+export default defineConfig([
   ...tsEslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
+  ...eslintPluginAstro.configs['jsx-a11y-recommended'],
   {
     languageOptions: {
       globals: {
@@ -13,25 +15,22 @@ export default [
         ...globals.node,
       },
     },
-  },
-  {
     rules: {
       'no-console': 'warn',
     },
   },
   {
-    files: ['src/**/*.{js,jsx,ts,tsx,astro}'],
+    files: ['src/**/*.{astro,js,jsx,ts,tsx}'],
     plugins: {
       perfectionist,
     },
     rules: {
-      'perfectionist/sort-objects': [
+      'perfectionist/sort-exports': [
         'error',
         {
           ignoreCase: true,
           order: 'asc',
-          partitionByComment: 'keep-order',
-          type: 'alphabetical',
+          type: 'natural',
         },
       ],
       'perfectionist/sort-imports': [
@@ -44,12 +43,11 @@ export default [
             'external',
             'internal',
             ['parent', 'sibling', 'index'],
-            'object',
             'unknown',
           ],
           ignoreCase: true,
           internalPattern: ['^@/'],
-          newlinesBetween: 'always',
+          newlinesBetween: 1,
           order: 'asc',
           type: 'natural',
         },
@@ -62,17 +60,18 @@ export default [
           type: 'natural',
         },
       ],
-      'perfectionist/sort-exports': [
+      'perfectionist/sort-objects': [
         'error',
         {
           ignoreCase: true,
           order: 'asc',
-          type: 'natural',
+          partitionByComment: 'keep-order',
+          type: 'alphabetical',
         },
       ],
     },
   },
   {
-    ignores: ['dist/**', '.astro/**'],
+    ignores: ['.astro/**', 'dist/**'],
   },
-]
+])
