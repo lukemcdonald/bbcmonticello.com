@@ -2,13 +2,14 @@
 import Breadcrumbs, { type Breadcrumb } from '@/components/Breadcrumbs.astro'
 import SiteIdentity from '@/components/SiteIdentity.astro'
 import SiteNavigation from '@/components/SiteNavigation.astro'
+import { normalizePath } from '@/lib/pathname'
 
 export interface Props {
   breadcrumbs?: Breadcrumb[]
 }
 
 const { breadcrumbs } = Astro.props
-const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index.html'
+const isHome = normalizePath(Astro.url.pathname) === '/'
 ---
 
 <a
