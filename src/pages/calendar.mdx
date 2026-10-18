@@ -4,19 +4,25 @@ title: 'Calendar'
 description: 'We invite you to join us each week for worship, fellowship, and the learning of God’s word!'
 ---
 
+import { SITE_WORSHIP } from '@/config'
+
 We invite you to join us each week for worship, fellowship, and the learning of God’s word! Below you will find a list of regularly scheduled worship services, ministries, bible studies, and activities. Please contact us with any questions or feel free to stop in; we’d love to have you.
 
 ## Sunday’s
 
 ### Worship Service
 
-_Every Sunday morning_
-Located at the Berean Bible Church building
-9:30-11:00 a.m.
+<p>
+  <em>{SITE_WORSHIP.sundayMorning.calendarNote}</em>
+</p>
+<p>{SITE_WORSHIP.sundayMorning.location}</p>
+<p>{SITE_WORSHIP.sundayMorning.timeRange}</p>
 
-_Every Sunday evening (except first Sunday of the month)_
-Located at the Berean Bible Church building
-6:00-7:00 p.m.
+<p>
+  <em>{SITE_WORSHIP.sundayEvening.calendarNote}</em>
+</p>
+<p>{SITE_WORSHIP.sundayEvening.location}</p>
+<p>{SITE_WORSHIP.sundayEvening.timeRange}</p>
 
 ## Wednesday’s
 

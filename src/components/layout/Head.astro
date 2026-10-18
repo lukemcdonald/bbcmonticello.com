@@ -1,8 +1,10 @@
 ---
 import '@/styles/global.css'
 
-import { Font } from 'astro:assets'
+import { Font, getImage } from 'astro:assets'
 
+import ogImage from '@/assets/bbc-og.jpg'
+import { getChurchJsonLd, SITE_TITLE } from '@/config'
 import { normalizePath } from '@/lib/pathname'
 
 export interface Props {
@@ -12,7 +14,26 @@ export interface Props {
 }
 
 const { description, image, title } = Astro.props
-const pageUrl = normalizePath(Astro.url.pathname) === '/' ? new URL('/', Astro.url) : Astro.url
+const site = Astro.site ?? Astro.url
+const canonicalPath = normalizePath(Astro.url.pathname)
+const pageUrl = new URL(canonicalPath, site)
+const defaultOgImage = await getImage({
+  format: 'jpg',
+  height: 630,
+  layout: 'none',
+  src: ogImage,
+  width: 1200,
+})
+const socialImageUrl = new URL(image ?? defaultOgImage.src, site)
+const churchJsonLd =
+  canonicalPath === '/' ?
+    JSON.stringify(
+      getChurchJsonLd({
+        image: socialImageUrl.href,
+        url: pageUrl.href,
+      }),
+    )
+  : null
 ---
 
 <head>
@@ -50,6 +71,10 @@ const pageUrl = normalizePath(Astro.url.pathname) === '/' ? new URL('/', Astro.u
     name="description"
     content={description}
   />
+  <link
+    rel="canonical"
+    href={pageUrl}
+  />
 
   <!-- Google -->
   <meta
@@ -63,6 +88,10 @@ const pageUrl = normalizePath(Astro.url.pathname) === '/' ? new URL('/', Astro.u
     content="website"
   />
   <meta
+    property="og:site_name"
+    content={SITE_TITLE}
+  />
+  <meta
     property="og:url"
     content={pageUrl}
   />
@@ -74,36 +103,51 @@ const pageUrl = normalizePath(Astro.url.pathname) === '/' ? new URL('/', Astro.u
     property="og:description"
     content={description}
   />
-  {image && (
-    <meta
-      property="og:image"
-      content={new URL(image, pageUrl)}
+  <meta
+    property="og:image"
+    content={socialImageUrl}
+  />
+  {!image && (
+    <>
+      <meta
+        property="og:image:width"
+        content="1200"
+      />
+      <meta
+        property="og:image:height"
+        content="630"
+      />
+    </>
+  )}
+  {churchJsonLd && (
+    <script
+      is:inline
+      set:html={churchJsonLd}
+      type="application/ld+json"
     />
   )}
 
   <!-- Twitter -->
   <meta
-    property="twitter:card"
+    name="twitter:card"
     content="summary_large_image"
   />
   <meta
-    property="twitter:url"
+    name="twitter:url"
     content={pageUrl}
   />
   <meta
-    property="twitter:title"
+    name="twitter:title"
     content={title}
   />
   <meta
-    property="twitter:description"
+    name="twitter:description"
     content={description}
   />
-  {image && (
-    <meta
-      property="twitter:image"
-      content={new URL(image, pageUrl)}
-    />
-  )}
+  <meta
+    name="twitter:image"
+    content={socialImageUrl}
+  />
 
   <!-- Fonts -->
   <Font
