@@ -23,6 +23,8 @@ const { breadcrumbs } = Astro.props
 >
   <SiteNavigation />
   <SiteIdentity />
-  {breadcrumbs ? <Breadcrumbs links={breadcrumbs} /> : null}
+  {breadcrumbs ?
+    <Breadcrumbs links={breadcrumbs} />
+  : null}
   <slot />
 </header>

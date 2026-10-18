@@ -15,28 +15,26 @@ const { links } = Astro.props
   class="relative bg-secondary-200 py-4 font-sans text-xs tracking-widest text-secondary-800 uppercase"
 >
   <div class="flex gap-3 px-6 2xl:container 2xl:mx-auto">
-    {
-      links.map((link: Breadcrumb, idx: number) => {
-        const isLast = idx === links.length - 1
-        return (
-          <>
-            {!isLast ?
-              <>
-                <span>
-                  <a href={link.href}>{link.label}</a>
-                </span>
-                <span class="sep">⟩</span>
-              </>
-            : <span
-                class="breadcrumb_last"
-                aria-current="page"
-              >
-                {link.label}
+    {links.map((link: Breadcrumb, idx: number) => {
+      const isLast = idx === links.length - 1
+      return (
+        <>
+          {!isLast ?
+            <>
+              <span>
+                <a href={link.href}>{link.label}</a>
               </span>
-            }
-          </>
-        )
-      })
-    }
+              <span class="sep">⟩</span>
+            </>
+          : <span
+              class="breadcrumb_last"
+              aria-current="page"
+            >
+              {link.label}
+            </span>
+          }
+        </>
+      )
+    })}
   </div>
 </section>
