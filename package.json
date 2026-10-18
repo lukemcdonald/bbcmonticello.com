@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "astro": "astro",
+    "audit:code": "fallow audit && fallow health --score --hotspots --summary",
     "build": "astro build",
     "check": "astro check",
     "clean": "rm -rf .astro dist node_modules",
@@ -35,6 +36,7 @@
     "eslint": "^9.39.5",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-perfectionist": "^4.15.1",
+    "fallow": "^3.34.1",
     "globals": "^16.5.0",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^0.14.1",
