@@ -2,7 +2,6 @@ import { z } from 'astro/zod'
 import { defineCollection } from 'astro:content'
 
 const YOUTUBE_FEED_URL =
-  process.env.YOUTUBE_FEED_URL ??
   'https://www.youtube.com/feeds/videos.xml?channel_id=UCmrgfWhOUByJrLlSVz3sVgA'
 
 function decodeXmlEntities(value: string) {
