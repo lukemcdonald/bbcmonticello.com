@@ -2,7 +2,10 @@
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
+import ogKit from 'astro-og-kit/integration'
 import { defineConfig, fontProviders } from 'astro/config'
+
+import { og } from './src/og'
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,7 +35,7 @@ export default defineConfig({
     layout: 'constrained',
     responsiveStyles: false,
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), ogKit(og), sitemap()],
   prefetch: true,
   site: 'https://bbcmonticello.com/',
   trailingSlash: 'never',

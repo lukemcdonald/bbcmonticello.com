@@ -1,38 +1,37 @@
 ---
 import '@/styles/global.css'
 
+import { HEIGHT, WIDTH } from 'astro-og-kit'
+import OgMeta from 'astro-og-kit/OgMeta.astro'
 import { Font, getImage } from 'astro:assets'
 
 import ogImage from '@/assets/bbc-og.jpg'
 import { getChurchJsonLd, SITE_TITLE } from '@/config'
 import { normalizePath } from '@/lib/pathname'
-import { buildOgImagePath, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH } from '@/utils/og'
+import { og } from '@/og'
 
 export interface Props {
   description: string
-  image?: string
   title: string
 }
 
-const { description, image, title } = Astro.props
+const { description, title } = Astro.props
 const site = Astro.site ?? Astro.url
 const canonicalPath = normalizePath(Astro.url.pathname)
 const pageUrl = new URL(canonicalPath, site)
 const defaultOgImage = await getImage({
   format: 'jpg',
-  height: OG_IMAGE_HEIGHT,
+  height: HEIGHT,
   layout: 'none',
   src: ogImage,
-  width: OG_IMAGE_WIDTH,
+  width: WIDTH,
 })
-const socialImagePath =
-  image ?? (canonicalPath === '/404' ? defaultOgImage.src : buildOgImagePath(canonicalPath))
-const socialImageUrl = new URL(socialImagePath, site)
+const fallbackOgImageUrl = new URL(defaultOgImage.src, site).href
 const churchJsonLd =
   canonicalPath === '/' ?
     JSON.stringify(
       getChurchJsonLd({
-        image: socialImageUrl.href,
+        image: new URL(og.path(canonicalPath), site).href,
         url: pageUrl.href,
       }),
     )
@@ -85,43 +84,15 @@ const churchJsonLd =
     content="Ua3-yrg0f1qjkE74afVsNPJZjCHzuOIleJThz2Oj7GY"
   />
 
-  <!-- Open Graph / Facebook -->
-  <meta
-    property="og:type"
-    content="website"
+  <!-- Open Graph / Twitter -->
+  <OgMeta
+    description={description}
+    footer={canonicalPath === '/' ? false : undefined}
+    image={canonicalPath === '/404' ? fallbackOgImageUrl : undefined}
+    siteName={SITE_TITLE}
+    title={title}
+    url={pageUrl}
   />
-  <meta
-    property="og:site_name"
-    content={SITE_TITLE}
-  />
-  <meta
-    property="og:url"
-    content={pageUrl}
-  />
-  <meta
-    property="og:title"
-    content={title}
-  />
-  <meta
-    property="og:description"
-    content={description}
-  />
-  <meta
-    property="og:image"
-    content={socialImageUrl}
-  />
-  {!image && (
-    <>
-      <meta
-        property="og:image:width"
-        content={String(OG_IMAGE_WIDTH)}
-      />
-      <meta
-        property="og:image:height"
-        content={String(OG_IMAGE_HEIGHT)}
-      />
-    </>
-  )}
   {churchJsonLd && (
     <script
       is:inline
@@ -129,28 +100,6 @@ const churchJsonLd =
       type="application/ld+json"
     />
   )}
-
-  <!-- Twitter -->
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  />
-  <meta
-    name="twitter:url"
-    content={pageUrl}
-  />
-  <meta
-    name="twitter:title"
-    content={title}
-  />
-  <meta
-    name="twitter:description"
-    content={description}
-  />
-  <meta
-    name="twitter:image"
-    content={socialImageUrl}
-  />
 
   <!-- Fonts -->
   <Font
