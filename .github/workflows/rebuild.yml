@@ -1,0 +1,29 @@
+name: Rebuild
+
+on:
+  schedule:
+    # 01:00 UTC Monday and Thursday is 8pm CDT / 7pm CST Sunday and Wednesday.
+    # GitHub cron is UTC-only, so this drifts by an hour around America/Chicago
+    # daylight time.
+    - cron: '0 1 * * 1,4'
+  workflow_dispatch:
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}
+
+jobs:
+  rebuild:
+    name: Trigger Netlify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Netlify build hook
+        env:
+          NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+        run: |
+          if [ -z "${NETLIFY_BUILD_HOOK_URL}" ]; then
+            echo "NETLIFY_BUILD_HOOK_URL secret is not set."
+            exit 1
+          fi
+
+          curl --fail --show-error --silent -X POST "${NETLIFY_BUILD_HOOK_URL}"

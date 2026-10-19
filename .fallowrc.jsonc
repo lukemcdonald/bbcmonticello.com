@@ -2,6 +2,7 @@
   "$schema": "./node_modules/fallow/schema.json",
   "entry": [
     "astro.config.mjs",
+    "src/content.config.ts",
     "src/layouts/**/*.astro",
     "src/pages/**/*.astro",
     "src/pages/**/*.mdx",

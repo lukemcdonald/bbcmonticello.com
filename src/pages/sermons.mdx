@@ -4,6 +4,11 @@ title: 'Sermons'
 description: 'A library of sermons from BBC Monticello'
 ---
 
+import Button from '@/components/Button.astro'
+import SermonList from '@/components/SermonList.astro'
+
 Listen to recent sermons.
 
-https://www.youtube.com/@BBCMonticello
+<SermonList />
+
+<Button to="https://www.youtube.com/@BBCMonticello">View all sermons on YouTube</Button>
