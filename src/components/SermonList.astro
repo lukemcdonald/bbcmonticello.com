@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content'
+
+const dateFormat = {
+  day: 'numeric',
+  month: 'long',
+  timeZone: 'America/Chicago',
+  year: 'numeric',
+} as const
+
+const sermons = (await getCollection('sermons'))
+  .slice()
+  .sort((left, right) => right.data.published.valueOf() - left.data.published.valueOf())
+  .slice(0, 12)
+---
+
+{sermons.length > 0 ?
+  <section
+    class="not-prose mt-8"
+    aria-label="Recent sermons"
+  >
+    <ul class="grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2">
+      {sermons.map((sermon) => <li>
+        <article>
+          <div class="relative aspect-video overflow-hidden bg-gray-800">
+            <a
+              class="group absolute inset-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+              data-youtube-id={sermon.data.videoId}
+              data-youtube-title={sermon.data.title}
+              href={`https://www.youtube.com/watch?v=${sermon.data.videoId}`}
+            >
+              <img
+                alt=""
+                class="h-full w-full object-cover"
+                decoding="async"
+                height="360"
+                loading="lazy"
+                src={sermon.data.thumbnail}
+                width="480"
+              />
+              <span
+                class="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/40"
+              >
+                <span
+                  class="flex h-14 w-14 items-center justify-center rounded-full bg-primary-500 text-white shadow-md group-hover:bg-primary-600"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6 translate-x-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7L8 5Z"></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="sr-only">Play {sermon.data.title}</span>
+            </a>
+          </div>
+          <h2 class="mt-3 font-sans text-lg leading-snug font-bold text-gray-900">
+            {sermon.data.title}
+          </h2>
+          <p class="mt-1 text-sm text-gray-600">
+            <time datetime={sermon.data.published.toISOString()}>
+              {sermon.data.published.toLocaleDateString('en-US', dateFormat)}
+            </time>
+          </p>
+        </article>
+      </li>)}
+    </ul>
+  </section>
+: null}
+
+<script>
+  function loadEmbed(link: HTMLAnchorElement) {
+    const id = link.dataset.youtubeId
+    const title = link.dataset.youtubeTitle
+
+    if (!id) {
+      return
+    }
+
+    const iframe = document.createElement('iframe')
+    iframe.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+    iframe.allowFullscreen = true
+    iframe.className = 'absolute inset-0 h-full w-full'
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`
+    iframe.title = title || 'YouTube video'
+    link.replaceWith(iframe)
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-youtube-id]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+        return
+      }
+
+      event.preventDefault()
+      loadEmbed(link)
+    })
+  })
+</script>
