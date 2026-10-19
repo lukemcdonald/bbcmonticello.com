@@ -1,68 +1,33 @@
-import type { APIRoute } from 'astro'
+import type { OgPage } from 'astro-og-kit'
 
-import { SITE_TITLE } from '@/config'
-import { renderOgPng } from '@/utils/og.render'
+import { og } from '@/og'
 
 export const prerender = true
 
-const pageSources = import.meta.glob<string>(['../**/*.astro', '../**/*.mdx'], {
-  eager: true,
-  import: 'default',
-  query: '?raw',
-})
+const pageModules = import.meta.glob<{ frontmatter?: { title: string }; title?: string }>(
+  ['../**/*.astro', '../**/*.mdx', '!../404.mdx'],
+  {
+    eager: true,
+  },
+)
 
-function slugFromGlobKey(key: string) {
-  return key.replace(/^\.\.\//, '').replace(/\.(astro|mdx)$/, '')
-}
+const pages: OgPage[] = []
 
-const CONST_TITLE = /const title = ['"](.+?)['"]/
-const FRONTMATTER_TITLE = /^title:\s*['"](.+?)['"]/m
+for (const [key, mod] of Object.entries(pageModules)) {
+  const title = mod.frontmatter?.title ?? mod.title
 
-function firstMatch(source: string, pattern: RegExp) {
-  return source.match(pattern)?.[1]
-}
-
-function pageTitle(source: string) {
-  return firstMatch(source, FRONTMATTER_TITLE) ?? firstMatch(source, CONST_TITLE)
-}
-
-function titleFromSource(source: string, slug: string) {
-  return pageTitle(source) ?? (slug === 'index' ? SITE_TITLE : undefined)
-}
-
-function pageMark(slug: string) {
-  return slug === 'index' ? '' : SITE_TITLE
-}
-
-export function getStaticPaths() {
-  const paths = []
-
-  for (const [key, source] of Object.entries(pageSources)) {
-    const slug = slugFromGlobKey(key)
-    const title = titleFromSource(source, slug)
-
-    if (!title || slug === '404') {
-      continue
-    }
-
-    paths.push({
-      params: { slug },
-      props: {
-        mark: pageMark(slug),
-        title,
-      },
-    })
+  if (!title) {
+    continue
   }
 
-  return paths
-}
+  const slug = key.replace(/^\.\.\//, '').replace(/\.(astro|mdx)$/, '')
+  const pathname = slug === 'index' ? '/' : `/${slug}`
 
-export const GET: APIRoute = async ({ props }) => {
-  const png = await renderOgPng({ mark: props.mark, title: props.title })
-
-  return new Response(Uint8Array.from(png), {
-    headers: {
-      'Content-Type': 'image/png',
-    },
+  pages.push({
+    footer: pathname === '/' ? false : undefined,
+    pathname,
+    title,
   })
 }
+
+export const { GET, getStaticPaths } = og.route(pages)
