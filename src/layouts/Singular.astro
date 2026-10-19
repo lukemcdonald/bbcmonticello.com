@@ -1,13 +1,7 @@
 ---
 import EntryTitle from '@/components/entry/EntryTitle.astro'
-import Body from '@/components/layout/Body.astro'
-import Content from '@/components/layout/Content.astro'
-import Footer from '@/components/layout/Footer.astro'
-import Head from '@/components/layout/Head.astro'
-import Header from '@/components/layout/Header.astro'
-import Html from '@/components/layout/Html.astro'
-import Main from '@/components/layout/Main.astro'
 import Prose from '@/components/Prose.astro'
+import Base from '@/layouts/Base.astro'
 
 export interface Props {
   content: {
@@ -26,26 +20,17 @@ const breadcrumbs = [
 ]
 ---
 
-<Html>
-  <Head
-    title={title}
-    description={description}
-  />
-
-  <Body>
-    <Header breadcrumbs={breadcrumbs} />
-    <Content>
-      <Main>
-        <article>
-          <header>
-            <EntryTitle>{title}</EntryTitle>
-          </header>
-        </article>
-        <Prose class="mt-6">
-          <slot />
-        </Prose>
-      </Main>
-    </Content>
-    <Footer />
-  </Body>
-</Html>
+<Base
+  breadcrumbs={breadcrumbs}
+  description={description}
+  title={title}
+>
+  <article>
+    <header>
+      <EntryTitle>{title}</EntryTitle>
+    </header>
+    <Prose class="mt-6">
+      <slot />
+    </Prose>
+  </article>
+</Base>
