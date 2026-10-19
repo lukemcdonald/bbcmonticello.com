@@ -2,9 +2,10 @@ name: Rebuild
 
 on:
   schedule:
-    # 08:00 UTC is 3:00am CDT / 2:00am CST. GitHub cron is UTC-only, so this
-    # drifts by an hour around America/Chicago daylight time.
-    - cron: '0 8 * * *'
+    # 01:00 UTC Monday and Thursday is 8pm CDT / 7pm CST Sunday and Wednesday.
+    # GitHub cron is UTC-only, so this drifts by an hour around America/Chicago
+    # daylight time.
+    - cron: '0 1 * * 1,4'
   workflow_dispatch:
 
 concurrency:
