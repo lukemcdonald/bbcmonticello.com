@@ -1,48 +1,27 @@
 ---
 import heroImage from '@/assets/bbc-hero.jpg'
 import Hero from '@/components/Hero.astro'
-import Body from '@/components/layout/Body.astro'
-import Content from '@/components/layout/Content.astro'
-import Footer from '@/components/layout/Footer.astro'
-import Head from '@/components/layout/Head.astro'
-import Header from '@/components/layout/Header.astro'
-import Html from '@/components/layout/Html.astro'
-import Main from '@/components/layout/Main.astro'
 import Prose from '@/components/Prose.astro'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_WORSHIP } from '@/config'
+import Base from '@/layouts/Base.astro'
 ---
 
-<Html>
-  <Head
-    title={SITE_TITLE}
-    description={SITE_DESCRIPTION}
+<Base
+  description={SITE_DESCRIPTION}
+  title={SITE_TITLE}
+>
+  <Hero
+    image={heroImage}
+    imageAlt="Berean Bible Church building exterior"
+    slot="header"
   />
-
-  <Body>
-    <Header>
-      <Hero
-        image={heroImage}
-        imageAlt="Berean Bible Church building exterior"
-      />
-    </Header>
-    <Content>
-      <Main>
-        <Prose class="mt-6">
-          <p>
-            <strong
-              >Berean Bible Church is meeting for Sunday worship at our facility located at:</strong
-            >
-          </p>
-          <p>
-            <strong>16107 County Road E16 – Monticello</strong> (This is the Lower Prairieburg
-            Road.)
-          </p>
-          <p>
-            <strong>Sunday Morning Worship begins at {SITE_WORSHIP.sundayMorning.homeStart}</strong>
-          </p>
-        </Prose>
-      </Main>
-    </Content>
-    <Footer />
-  </Body>
-</Html>
+  <Prose class="mt-6">
+    <p>
+      <strong>Berean Bible Church is meeting for Sunday worship at our facility located at:</strong>
+    </p>
+    <p><strong>16107 County Road E16 – Monticello</strong> (This is the Lower Prairieburg Road.)</p>
+    <p>
+      <strong>Sunday Morning Worship begins at {SITE_WORSHIP.sundayMorning.homeStart}</strong>
+    </p>
+  </Prose>
+</Base>
