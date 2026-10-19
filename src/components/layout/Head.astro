@@ -26,6 +26,7 @@ const defaultOgImage = await getImage({
   src: ogImage,
   width: WIDTH,
 })
+const fallbackOgImageUrl = new URL(defaultOgImage.src, site).href
 const churchJsonLd =
   canonicalPath === '/' ?
     JSON.stringify(
@@ -86,8 +87,8 @@ const churchJsonLd =
   <!-- Open Graph / Twitter -->
   <OgMeta
     description={description}
-    image={canonicalPath === '/404' ? defaultOgImage.src : undefined}
-    og={og}
+    footer={canonicalPath === '/' ? false : undefined}
+    image={canonicalPath === '/404' ? fallbackOgImageUrl : undefined}
     siteName={SITE_TITLE}
     title={title}
     url={pageUrl}
