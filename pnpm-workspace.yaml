@@ -1,0 +1,15 @@
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  sharp: true
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - sharp
+overrides:
+  postcss-selector-parser: 7.1.6
+publicHoistPattern:
+  - '*astro*'
+  - '*eslint*'
+  - '*typescript*'

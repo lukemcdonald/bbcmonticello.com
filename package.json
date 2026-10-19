@@ -3,6 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "astro": "astro",
     "audit:code": "fallow audit && fallow health --score --hotspots --summary",
@@ -12,16 +15,17 @@
     "deploy:prod": "netlify deploy --build --prod",
     "dev": "astro dev",
     "dev:netlify": "netlify dev",
-    "fix": "npm run lint:fix && npm run format:fix",
+    "fix": "pnpm run lint:fix && pnpm run format:fix",
     "format": "prettier --write .",
     "format:check": "prettier . --check --ignore-unknown",
     "format:fix": "prettier . --write --ignore-unknown",
     "lint": "eslint ./src --report-unused-disable-directives",
     "lint:fix": "eslint ./src --fix --report-unused-disable-directives",
+    "preinstall": "npx only-allow pnpm",
     "preview": "netlify deploy --build --message \"preview $(git rev-parse --short HEAD)\"",
-    "start": "npm run dev",
+    "start": "pnpm run dev",
     "typecheck": "astro check",
-    "validate": "npm run -s lint && npm run -s format:check && npm run -s typecheck"
+    "validate": "pnpm run -s lint && pnpm run -s format:check && pnpm run -s typecheck"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.0",
@@ -47,7 +51,5 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.2"
   },
-  "overrides": {
-    "postcss-selector-parser": "7.1.6"
-  }
+  "packageManager": "pnpm@12.4.2"
 }
