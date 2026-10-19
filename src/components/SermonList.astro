@@ -1,10 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
 
-import Button from '@/components/Button.astro'
-
-const youtubeChannelUrl = 'https://www.youtube.com/@BBCMonticello'
-
 const dateFormat = {
   day: 'numeric',
   month: 'long',
@@ -72,9 +68,6 @@ const sermons = (await getCollection('sermons'))
         </article>
       </li>)}
     </ul>
-    <p class="mt-8">
-      <Button to={youtubeChannelUrl}>View all sermons on YouTube</Button>
-    </p>
   </section>
 : null}
 
