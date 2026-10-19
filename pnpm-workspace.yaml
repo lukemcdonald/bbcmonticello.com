@@ -1,17 +1,4 @@
-allowBuilds:
-  '@parcel/watcher': true
-  esbuild: true
-  sharp: true
 minimumReleaseAgeExclude:
   - astro-og-kit@0.4.0
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - sharp
 overrides:
   postcss-selector-parser: 7.1.6
-publicHoistPattern:
-  - '*astro*'
-  - '*eslint*'
-  - '*typescript*'

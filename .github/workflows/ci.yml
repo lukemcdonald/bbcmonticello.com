@@ -21,7 +21,7 @@ jobs:
         with:
           cache: pnpm
           node-version-file: .nvmrc
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
       - run: pnpm validate
       - run: pnpm build
 
@@ -37,7 +37,7 @@ jobs:
         with:
           cache: pnpm
           node-version-file: .nvmrc
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
       - name: Audit new issues vs PR base
         if: github.event_name == 'pull_request'
         run: |
