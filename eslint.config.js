@@ -72,6 +72,12 @@ export default defineConfig([
     },
   },
   {
+    files: ['src/pages/**/*.astro'],
+    rules: {
+      'astro/no-exports-from-components': 'off',
+    },
+  },
+  {
     ignores: ['.astro/**', 'dist/**'],
   },
 ])
