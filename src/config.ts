@@ -22,6 +22,11 @@ const SITE_GEO = {
 export const SITE_MAPS_URL =
   'https://www.google.com/maps/place/Berean+Bible+Church/@42.2248147,-91.1925737,17z/data=!3m1!4b1!4m5!3m4!1s0x87e36074774e06bd:0xd8e7ca558df6812c!8m2!3d42.2248147!4d-91.190385'
 
+export const SITE_THEME_COLOR = {
+  dark: '#7e0e28',
+  light: '#f9f9f8',
+}
+
 export const SITE_TITLE = 'Berean Bible Church'
 
 export const SITE_WORSHIP = {

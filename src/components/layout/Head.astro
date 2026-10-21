@@ -6,7 +6,7 @@ import OgMeta from 'astro-og-kit/OgMeta.astro'
 import { Font, getImage } from 'astro:assets'
 
 import ogImage from '@/assets/bbc-og.jpg'
-import { getChurchJsonLd, SITE_TITLE } from '@/config'
+import { getChurchJsonLd, SITE_THEME_COLOR, SITE_TITLE } from '@/config'
 import { normalizePath } from '@/lib/pathname'
 import { og } from '@/og'
 
@@ -53,8 +53,31 @@ const churchJsonLd =
   <!-- Favicon -->
   <link
     rel="icon"
+    href="/favicon.ico"
+    sizes="32x32"
+  />
+  <link
+    rel="icon"
     type="image/svg+xml"
     href="/favicon.svg"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="/apple-touch-icon.png"
+  />
+  <link
+    rel="manifest"
+    href="/site.webmanifest"
+  />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: light)"
+    content={SITE_THEME_COLOR.light}
+  />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: dark)"
+    content={SITE_THEME_COLOR.dark}
   />
 
   <!-- Sitemap -->
