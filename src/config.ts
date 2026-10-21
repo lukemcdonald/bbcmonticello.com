@@ -10,6 +10,8 @@ export const SITE_ADDRESS = {
   street: '16107 County Road E16',
 }
 
+export const SITE_ADDRESS_LOCALITY = `${SITE_ADDRESS.city}, ${SITE_ADDRESS.region} ${SITE_ADDRESS.postalCode}`
+
 export const SITE_DESCRIPTION =
   'Berean Bible Church - A family of believers in Jesus Christ seeking to honor God through His Word and sharing the Gospel in Monticello, Iowa.'
 

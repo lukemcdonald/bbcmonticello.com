@@ -16,6 +16,7 @@ export interface Props {
 }
 
 const { breadcrumbs, description, title } = Astro.props
+const hasMain = Astro.slots.has('default')
 ---
 
 <Html>
@@ -29,9 +30,11 @@ const { breadcrumbs, description, title } = Astro.props
       <slot name="header" />
     </Header>
     <Content>
-      <Main>
-        <slot />
-      </Main>
+      {hasMain ?
+        <Main>
+          <slot />
+        </Main>
+      : null}
       <slot name="sidebar" />
     </Content>
     <Footer />
