@@ -6,7 +6,7 @@ import OgMeta from 'astro-og-kit/OgMeta.astro'
 import { Font, getImage } from 'astro:assets'
 
 import ogImage from '@/assets/bbc-og.jpg'
-import { getChurchJsonLd, SITE_TITLE } from '@/config'
+import { getChurchJsonLd, SITE_THEME_COLOR, SITE_TITLE } from '@/config'
 import { normalizePath } from '@/lib/pathname'
 import { og } from '@/og'
 
@@ -72,12 +72,12 @@ const churchJsonLd =
   <meta
     name="theme-color"
     media="(prefers-color-scheme: light)"
-    content="#f9f9f8"
+    content={SITE_THEME_COLOR.light}
   />
   <meta
     name="theme-color"
     media="(prefers-color-scheme: dark)"
-    content="#7e0e28"
+    content={SITE_THEME_COLOR.dark}
   />
 
   <!-- Sitemap -->
