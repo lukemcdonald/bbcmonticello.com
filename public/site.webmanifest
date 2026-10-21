@@ -1,0 +1,25 @@
+{
+  "background_color": "#f9f9f8",
+  "display": "browser",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/icon-192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "/icon-512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/icon-maskable-512.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "Berean Bible Church",
+  "short_name": "Berean Bible Church",
+  "theme_color": "#7e0e28"
+}
