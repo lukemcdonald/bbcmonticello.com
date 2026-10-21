@@ -2,6 +2,7 @@
 import Widget from '@/components/widget/Widget.astro'
 import { SITE_ADDRESS, SITE_MAPS_URL, SITE_WORSHIP } from '@/config'
 
+const addressLine = `${SITE_ADDRESS.street}, ${SITE_ADDRESS.city}, ${SITE_ADDRESS.region} ${SITE_ADDRESS.postalCode}`
 const today = new Date()
 ---
 
@@ -30,13 +31,9 @@ const today = new Date()
 
         <Widget title="Sunday Worship">
           <p>
-            Sundays at {SITE_WORSHIP.sundayMorning.homeStart}.
-            <a href={SITE_MAPS_URL}>
-              {SITE_ADDRESS.street}, {SITE_ADDRESS.city}, {SITE_ADDRESS.region}{' '}
-              {SITE_ADDRESS.postalCode}
-            </a
-            >.
-            {SITE_ADDRESS.roadNote}
+            Sundays at
+            {SITE_WORSHIP.sundayMorning.homeStart}<br /><a href={SITE_MAPS_URL}>{addressLine}</a
+            ><br />{SITE_ADDRESS.roadNote}
           </p>
         </Widget>
       </div>
