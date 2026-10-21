@@ -1,6 +1,12 @@
 ---
 import Logo from '@/components/Logo.astro'
-import { SITE_ADDRESS, SITE_DESCRIPTION, SITE_MAPS_URL, SITE_TITLE } from '@/config'
+import {
+  SITE_ADDRESS,
+  SITE_ADDRESS_LOCALITY,
+  SITE_DESCRIPTION,
+  SITE_MAPS_URL,
+  SITE_TITLE,
+} from '@/config'
 
 interface Props {
   isHome?: boolean
@@ -40,7 +46,7 @@ const TitleTag = isHome ? 'h1' : 'p'
         >
           <div class="sr-only font-bold">{SITE_TITLE}</div>
           <div>{SITE_ADDRESS.street}</div>
-          <div>{SITE_ADDRESS.city}, {SITE_ADDRESS.region} {SITE_ADDRESS.postalCode}</div>
+          <div>{SITE_ADDRESS_LOCALITY}</div>
         </a>
       </address>
     </div>

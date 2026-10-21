@@ -1,6 +1,6 @@
 ---
 import Widget from '@/components/widget/Widget.astro'
-import { SITE_WORSHIP } from '@/config'
+import { SITE_ADDRESS, SITE_ADDRESS_LOCALITY, SITE_MAPS_URL, SITE_WORSHIP } from '@/config'
 
 const today = new Date()
 ---
@@ -30,8 +30,12 @@ const today = new Date()
 
         <Widget title="Sunday Worship">
           <p>
-            Every Sunday morning at our church facility from {SITE_WORSHIP.sundayMorning.timeRange}
+            Sundays at
+            {SITE_WORSHIP.sundayMorning.homeStart}<br /><a href={SITE_MAPS_URL}
+              >{SITE_ADDRESS.street}<br />{SITE_ADDRESS_LOCALITY}</a
+            >
           </p>
+          <p class="text-sm text-gray-600">{SITE_ADDRESS.roadNote}</p>
         </Widget>
       </div>
     </div>
