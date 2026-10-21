@@ -6,7 +6,8 @@ export const SITE_ADDRESS = {
   country: 'US',
   postalCode: '52310',
   region: 'IA',
-  street: '16107 County Rd E16',
+  roadNote: 'County Road E16 is the Lower Prairieburg Road.',
+  street: '16107 County Road E16',
 }
 
 export const SITE_DESCRIPTION =
