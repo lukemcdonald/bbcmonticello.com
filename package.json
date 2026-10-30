@@ -28,9 +28,9 @@
     "validate": "pnpm run -s lint && pnpm run -s format:check && pnpm run -s typecheck"
   },
   "dependencies": {
-    "@astrojs/mdx": "^8.1.0",
+    "@astrojs/mdx": "^8.1.1",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.1",
+    "astro": "^7.4.2",
     "astro-og-kit": "0.4.0",
     "sharp": "^0.35.4"
   },
