@@ -53,24 +53,67 @@ function parseYoutubeFeed(xml: string) {
     .filter((item) => item !== undefined)
 }
 
+const FEED_ATTEMPTS = 3
+
+function feedErrorDetail(error: unknown) {
+  if (!(error instanceof Error)) {
+    return String(error)
+  }
+
+  if (error.cause instanceof Error && !error.message.includes(error.cause.message)) {
+    return `${error.message}: ${error.cause.message}`
+  }
+
+  return error.message
+}
+
+async function requestYoutubeFeed() {
+  const response = await fetch(YOUTUBE_FEED_URL, {
+    headers: {
+      'User-Agent': 'bbcmonticello.com',
+    },
+    signal: AbortSignal.timeout(10_000),
+  })
+
+  if (!response.ok) {
+    throw new Error(`YouTube sermons feed returned HTTP ${response.status}`)
+  }
+
+  return response.text()
+}
+
+async function fetchYoutubeFeed() {
+  let cause: unknown
+
+  for (let attempt = 1; attempt <= FEED_ATTEMPTS; attempt += 1) {
+    try {
+      return await requestYoutubeFeed()
+    } catch (error) {
+      cause = error
+
+      if (attempt < FEED_ATTEMPTS) {
+        await new Promise((resolve) => {
+          setTimeout(resolve, 500 * attempt)
+        })
+      }
+    }
+  }
+
+  throw new Error(
+    `Failed to load the sermons feed after ${FEED_ATTEMPTS} attempts: ${feedErrorDetail(cause)}`,
+    { cause },
+  )
+}
+
 const sermons = defineCollection({
   loader: async () => {
-    try {
-      const response = await fetch(YOUTUBE_FEED_URL, {
-        headers: {
-          'User-Agent': 'bbcmonticello.com',
-        },
-        signal: AbortSignal.timeout(10_000),
-      })
+    const entries = parseYoutubeFeed(await fetchYoutubeFeed())
 
-      if (!response.ok) {
-        return []
-      }
-
-      return parseYoutubeFeed(await response.text())
-    } catch {
-      return []
+    if (entries.length === 0) {
+      throw new Error('YouTube sermons feed parsed to zero entries')
     }
+
+    return entries
   },
   schema: z.object({
     published: z.coerce.date(),
