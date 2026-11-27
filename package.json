@@ -42,14 +42,14 @@
     "eslint-plugin-astro": "^3.2.1",
     "eslint-plugin-jsx-a11y-x": "^0.2.0",
     "eslint-plugin-perfectionist": "^5.14.0",
-    "fallow": "^3.43.2",
+    "fallow": "^3.48.0",
     "globals": "^17.14.0",
     "prettier": "^3.10.1",
     "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.73.0"
+    "typescript-eslint": "^8.74.0"
   },
   "packageManager": "pnpm@12.4.2"
 }
